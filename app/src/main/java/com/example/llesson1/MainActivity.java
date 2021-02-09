@@ -9,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.llesson1.notes.activities.Notes;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -16,25 +18,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ImageView ContactList = findViewById(R.id.ContactList);
-        ContactList.setOnClickListener(new View.OnClickListener() {
+        Button notesButton = (Button) findViewById(R.id.noteButton);
+        notesButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                onBackPressed();
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Notes.class);
+                startActivity(intent);
             }
-        }
-        );
-
-        Button notesButton = findViewById(R.id.noteButton);
-         notesButton.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
 
 
-            }
-         );
+        });
     }
 }
+
+
+

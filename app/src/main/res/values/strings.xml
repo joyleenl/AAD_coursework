@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Llesson1</string>
+    <string name="emergency_button">Emergency Button</string>
+    <string name="magnify">Magnify</string>
+    <string name="pill_reminder">Pill Reminder</string>
+    <string name="zoom_in">Zoom In</string>
+    <string name="zoom_out">Zoom out</string>
+    <string name="read_for_me">Read For me</string>
+    <string name="back">Back</string>
+    <string name="notes">Notes</string>
+    <string name="closeapp">closeapp</string>
+    <string name="Notes">notes</string>
+    <string name="search_note">Search Note</string>
+    <string name="note_title">Note Title</string>
+    <string name="Note_Subtitle">Note Subtitle</string>
+    <string name="type_here">Type Here...</string>
+    <string name="Miscellaneous">Miscellaneous</string>
+    <string name="delete_note">Delete Note</string>
+    <string name="are_you_sure_you_want_to_delete">Are You Sure You Want To Delete?</string>
+    <string name="pick_a_color">Pick A Color</string>
+</resources>

@@ -18,4 +18,5 @@
     <string name="delete_note">Delete Note</string>
     <string name="are_you_sure_you_want_to_delete">Are You Sure You Want To Delete?</string>
     <string name="pick_a_color">Pick A Color</string>
+    <string name="turn_on_flash">Turn On Flash</string>
 </resources>

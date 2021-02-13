@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="seekBarstyle" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#ffffff</item>
+        <item name="android:colorControlNormal">#e6e3e3</item>
+    </style>
+</resources>

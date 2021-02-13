@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#595959</color>
+
+    <color name="notesButton">#009688</color>
     <color name="notesSearchIcon">#DBDBDB</color>
     <color name="notesTextHint">#7B7B7B</color>
     <color name="notesAdd">#A4DE02</color>
@@ -17,4 +19,12 @@
     <color name="noteColor4">#3A52Fc</color>
     <color name="noteColor5">#000000</color>
     <color name="noteDelete">#FF4842</color>
+
+
+    <color name="magnifyButton">#2196F3</color>
+    <color name="bottomBG">#0c5ac7</color>
+
+    <color name="pillButton">#FFEB3B</color>
+
+    <color name="emergencyButton">#F10505</color>
 </resources>

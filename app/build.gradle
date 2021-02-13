@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.llesson1"
-        minSdkVersion 25
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -36,6 +36,23 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //for permission
+    implementation 'com.kishan.askpermission:askpermission:1.0.3'
+
+    //camera
+    implementation 'io.github.memfis19:annca:0.3.7'
+
+    //for camera
+    def camerax_version = "1.0.0-beta07"
+// CameraX core library using camera2 implementation
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+// CameraX Lifecycle Library
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+// CameraX View class
+    implementation "androidx.camera:camera-view:1.0.0-alpha14"
+
+    //for text to speech
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
 
     //room (for db)
     implementation 'androidx.room:room-runtime:2.2.6'
@@ -53,10 +70,5 @@ dependencies {
 
     //rounded imageview
     implementation "com.makeramen:roundedimageview:2.3.0"
-
-
-
-
-
 
 }

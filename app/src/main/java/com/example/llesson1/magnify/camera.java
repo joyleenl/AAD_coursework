@@ -63,14 +63,14 @@ public class camera extends AppCompatActivity {
             Toast.makeText(com.example.llesson1.magnify.camera.this, "This device has no camera", Toast.LENGTH_SHORT).show();
         }
         @Override
-        public float getCurrentZoom() {
+        public float getCurrentZoom () {
             return zoomLevel;
         }
 
         @Override
-        public void setCurrentZoom(float zoomLevel) {
+        public void setCurrentZoom ( float zoomLevel){
             Rect zoomRect = getZoomRect(zoomLevel);
-            if(zoomRect != null) {
+            if (zoomRect != null) {
                 try {
                     //you can try to add the synchronized object here
                     previewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION, zoomRect);
@@ -82,12 +82,12 @@ public class camera extends AppCompatActivity {
             }
         }
 
-        private Rect getZoomRect(float zoomLevel) {
+        private Rect getZoomRect ( float zoomLevel){
             try {
                 CameraCharacteristics characteristics = manager.getCameraCharacteristics(this.camera);
                 float maxZoom = (characteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM)) * 10;
                 Rect activeRect = characteristics.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE);
-                if((zoomLevel <= maxZoom) && (zoomLevel > 1)) {
+                if ((zoomLevel <= maxZoom) && (zoomLevel > 1)) {
                     int minW = (int) (activeRect.width() / maxZoom);
                     int minH = (int) (activeRect.height() / maxZoom);
                     int difW = activeRect.width() - minW;
@@ -97,7 +97,7 @@ public class camera extends AppCompatActivity {
                     cropW -= cropW & 3;
                     cropH -= cropH & 3;
                     return new Rect(cropW, cropH, activeRect.width() - cropW, activeRect.height() - cropH);
-                } else if(zoomLevel == 0){
+                } else if (zoomLevel == 0) {
                     new Rect(0, 0, activeRect.width(), activeRect.height());
                     return;
                 }
@@ -109,24 +109,24 @@ public class camera extends AppCompatActivity {
         }
 
         @Override
-        public float getMaxZoom() {
+        public float getMaxZoom () {
             try {
                 return (manager.getCameraCharacteristics(this.camera).get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM)) * 10;
             } catch (Exception e) {
                 Log.e(TAG, "Error during camera init");
                 return -1;
             }
-        //open cam
-        camera = Camera.open();
+            //open cam
+            camera = Camera.open();
 
-        //call the showCam class to be inititaed adn surface cerated method is calles
-        showCam = new showCam(this, camera);
-        frameLayout.addView(showCam);
+            //call the showCam class to be inititaed adn surface cerated method is calles
+            showCam = new showCam(this, camera);
+            frameLayout.addView(showCam);
 
-        //seekbar zoom
-        int MaxZoom = parameters.getMaxZoom();
-        zoomDrag.setProgress(0);
-        zoomDrag.setMax(maxZoom*100);
+            //seekbar zoom
+            int MaxZoom = parameters.getMaxZoom();
+            zoomDrag.setProgress(0);
+            zoomDrag.setMax(maxZoom * 100);
 
             zoomDrag.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -148,60 +148,60 @@ public class camera extends AppCompatActivity {
             });
 
 
-        int mProgress;
-        {
-            minZoom = getMinZoom();
-            maxZoom = getMaxZoom() - 1;
-            final int zoomStep = 1;
+            int mProgress;
+            {
+                minZoom = getMinZoom();
+                maxZoom = getMaxZoom() - 1;
+                final int zoomStep = 1;
 
-            zoomDrag.setMax(Math.round(maxZoom - minZoom));
-            zoomDrag.setOnSeekBarChangeListener(
-                    new SeekBar.OnSeekBarChangeListener()
-                    {
-                        @Override
-                        public void onStopTrackingTouch(SeekBar seekBar) {
-                            setCurrentZoom(Math.round(minZoom + (mProgress * zoomStep)));
+                zoomDrag.setMax(Math.round(maxZoom - minZoom));
+                zoomDrag.setOnSeekBarChangeListener(
+                        new SeekBar.OnSeekBarChangeListener() {
+                            @Override
+                            public void onStopTrackingTouch(SeekBar seekBar) {
+                                setCurrentZoom(Math.round(minZoom + (mProgress * zoomStep)));
+                            }
+
+                            @Override
+                            public void onStartTrackingTouch(SeekBar seekBar) {
+                            }
+                            //to do auto generated mothod stub
+
+                            @Override
+                            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                                setCurrentZoom(Math.round(minZoom + (progress * zoomStep)));
+                                if (fromUser) mProgress = progress;
+                            }
+                        }
+                );
+            }
+
+            // turn the flash on and off
+            flashControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    // if flash control is checked
+                    if (isChecked) {
+                        //back camera is 0 (get from cameraManager.getCameraIdList)
+                        try {
+                            cameraManager.setTorchMode("0", false);
+                        } catch (CameraAccessException e) {
+                            e.printStackTrace();
                         }
 
-                        @Override
-                        public void onStartTrackingTouch(SeekBar seekBar) {}
-                        //todo auto generated mothod stub
-
-                        @Override
-                        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                            setCurrentZoom(Math.round(minZoom + (progress * zoomStep)));
-                            if(fromUser) mProgress = progress;
+                    } else {
+                        try {
+                            cameraManager.setTorchMode("0", true);
+                        } catch (CameraAccessException e) {
+                            e.printStackTrace();
                         }
-                    }
-            );
-        }
-
-        // turn the flash on and off
-        flashControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // if flash control is checked
-                if (isChecked) {
-                    //back camera is 0 (get from cameraManager.getCameraIdList)
-                    try {
-                        cameraManager.setTorchMode("0", false);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-
-                } else {
-                    try {
-                        cameraManager.setTorchMode("0", true);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
                     }
                 }
-            }
-        });
+            });
+
+
+        }
 
 
     }
-
-
-
 }

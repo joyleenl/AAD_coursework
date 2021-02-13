@@ -16,7 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Llesson1">
-        <activity android:name=".magnify2.camera"></activity>
         <activity android:name=".magnify.camera" />
         <activity
             android:name=".notes.activities.Notes"

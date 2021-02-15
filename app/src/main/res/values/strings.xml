@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Llesson1</string>
+    <string name="app_name">Helping Hands</string>
     <string name="emergency_button">Emergency Button</string>
     <string name="magnify">Magnify</string>
     <string name="pill_reminder">Pill Reminder</string>
@@ -19,4 +19,20 @@
     <string name="are_you_sure_you_want_to_delete">Are You Sure You Want To Delete?</string>
     <string name="pick_a_color">Pick A Color</string>
     <string name="turn_on_flash">Turn On Flash</string>
+    <string name="title_medicine_name">Medicine Name</string>
+    <string name="hint_enter_med_name">Enter Medicine</string>
+    <string name="Sunday">S</string>
+    <string name="Monday">M</string>
+    <string name="Tuesday">T</string>
+    <string name="Wednesday">W</string>
+    <string name="Tuhrsday">T</string>
+    <string name="Friday">F</string>
+    <string name="Saturday">S</string>
+    <string name="every_day">Every Day</string>
+    <string name="add_button_pill">Click the add button to add pill reminder</string>
+    <string name="reminder">Reminder</string>
+    <string name="_1_0">1.0</string>
+    <string name="enter_medicine_name">Enter Medicine Name</string>
+    <string name="medicine_days">Medicine Days</string>
+    <string name="medicine_name">Medicine Name</string>
 </resources>

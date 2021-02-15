@@ -16,6 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Llesson1">
+        <activity android:name=".pillReminder.addReminder"></activity>
+        <activity android:name=".pillReminder.pillReminderMain" />
         <activity android:name=".magnify.camera" />
         <activity
             android:name=".notes.activities.Notes"
@@ -47,4 +49,4 @@
             android:value="ocr" />
     </application>
 
-</manifest>-
+</manifest>

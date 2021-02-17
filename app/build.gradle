@@ -80,6 +80,11 @@ dependencies {
     //add more field to form
     implementation "com.wrapp.floatlabelededittext:library:0.0.5"
 
+    //alarm compact calendar view
+    implementation "com.github.sundeepk:compact-calendar-view:3.0.0"
+
+
+
     
 
 }

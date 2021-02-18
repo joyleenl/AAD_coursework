@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public class AlarmReminderContract {
+/*public class AlarmReminderContract {
     private AlarmReminderContract() {}
     public static final String CONTENT_AUTHORITY = "com.example.lleson1";
     public static final Uri BASE_CONTENT_URI = Uri.parse ("content://"+ CONTENT_AUTHORITY);
@@ -32,4 +32,4 @@ public class AlarmReminderContract {
         return cursor.getString(cursor.getColumnIndex(columnName);
     }
 
-}
+}*/

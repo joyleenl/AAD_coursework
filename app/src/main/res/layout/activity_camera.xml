@@ -43,21 +43,6 @@
         app:layout_constraintStart_toStartOf="@id/bottomlayout"/>
 
 
-    <Button
-        android:id="@+id/readForMe"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:contentDescription="@string/app_name"
-        android:padding="@dimen/_5sdp"
-        android:text="@string/read_for_me"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="@id/bottomlayout"
-        app:layout_constraintBottom_toBottomOf="@id/bottomlayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/white" />
-
     <Switch
         android:id="@+id/flashButton"
         android:layout_width="@dimen/_40sdp"

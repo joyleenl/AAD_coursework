@@ -35,4 +35,21 @@
     <string name="enter_medicine_name">Enter Medicine Name</string>
     <string name="medicine_days">Medicine Days</string>
     <string name="medicine_name">Medicine Name</string>
+    <string name="no_medecine_added">NO MEDICINE ADDED</string>
+    <string name="ignored">IGNORED</string>
+    <string name="loading_tasks_error">Error while loading medicineAlarms</string>
+    <string name="successfully_saved_me_message">Medicine Added Successfully</string>
+    <string name="successfully_deleted_message">Medicine deleted Successfully</string>
+    <string name="no_medicine_added">No Medicine Added</string>
+    <string name="taken">TAKEN</string>
+    <string name="all">ALL</string>
+    <string name="menu_filter">Filter</string>
+    <string name="all_label">All Medicines</string>
+    <string name="ignore_label">Medicines Ignored</string>
+    <string name="taken_label">Medicine Taken</string>
+    <string name="no_history">No History Found</string>
+    <string name="no_taken_med_history">You have not taken any medicine</string>
+    <string name="no_ignored_history">Well Done</string>
+    <string name="menu_stats">Monthly Report</string>
+    <string name="reminder_message">It\'s time to take your medicine!</string>
 </resources>

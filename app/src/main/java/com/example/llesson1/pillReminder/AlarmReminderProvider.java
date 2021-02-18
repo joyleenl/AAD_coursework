@@ -12,6 +12,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.llesson1.pillReminder.data.source.AlarmReminderDBHelper;
+/*
 //assess data fr db
 public class AlarmReminderProvider extends ContentProvider {
     public static final String LOG_TAG = AlarmReminderProvider.class.getSimpleName();
@@ -147,3 +149,6 @@ private int updateReminder(Uri uri, ContentValues values, String selection, Stri
         return rowsUpdated;
 }
 }
+
+
+ */

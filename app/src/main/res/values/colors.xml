@@ -25,7 +25,10 @@
     <color name="bottomBG">#0c5ac7</color>
 
     <color name="pillButton">#FFEB3B</color>
+    <color name="colorPrimary">#FFEB3B</color>
     <color name="bgAddButton">#fff429</color>
+    <color name="colorAccent">#FF000000</color>
+    <drawable name="touchFeedback">#CFD8DC</drawable>
 
     <color name="emergencyButton">#F10505</color>
 </resources>

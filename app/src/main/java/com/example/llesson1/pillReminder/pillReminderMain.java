@@ -17,9 +17,10 @@ import android.widget.ListView;
 import android.widget.Toolbar;
 
 import com.example.llesson1.R;
+import com.example.llesson1.pillReminder.data.source.AlarmReminderDBHelper;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
-public class pillReminderMain extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+/*public class pillReminderMain extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private FloatingActionButton mAddReminderButton;
     private Toolbar mToolbar;
     AlarmCursorAdapter mCursorAdapter;
@@ -92,3 +93,5 @@ public class pillReminderMain extends AppCompatActivity implements LoaderManager
         mCursorAdapter.swapCursor(null)
     }
 }
+
+ */

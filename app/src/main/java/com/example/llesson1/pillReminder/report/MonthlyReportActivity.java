@@ -48,7 +48,7 @@ public class MonthlyReportActivity extends AppCompatActivity {
         //Create Fragment
         MonthlyReportFragment monthlyReportFragment = (MonthlyReportFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if (monthlyReportFragment == null) {
-            com.example.llesson1.pillReminder.report.MonthlyReportFragment = MonthlyReportFragment.newInstance();
+            monthlyReportFragment = MonthlyReportFragment.newInstance();
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), monthlyReportFragment, R.id.contentFrame);
         }
 

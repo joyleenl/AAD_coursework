@@ -55,7 +55,7 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
     };
 
     MedicineFragment (View itemView){
-        super();
+        super(itemView);
         bindViews(itemView);
     }
     private void bindViews (View root) {
@@ -69,7 +69,7 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
 
     public static MedicineFragment newInstance() {
         Bundle args = new Bundle();
-        com.example.llesson1.pillReminder.medicine.MedicineFragment fragment = new com.example.llesson1.pillReminder.medicine.MedicineFragment();
+        MedicineFragment fragment = new MedicineFragment();
         fragment.setArguments(args);
         return fragment;
     }

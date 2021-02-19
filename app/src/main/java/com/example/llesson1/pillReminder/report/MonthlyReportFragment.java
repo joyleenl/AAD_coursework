@@ -46,6 +46,8 @@ public class MonthlyReportFragment extends Fragment implements MonthlyReportCont
 
     private MonthlyReportContract.Presenter presenter;
 
+    private int
+
     MonthlyReportFragment(View itemView){
         super(itemView);
         bindViews(itemView);
@@ -61,9 +63,9 @@ public class MonthlyReportFragment extends Fragment implements MonthlyReportCont
         tasksLL = (LinearLayout) root.findViewById(R.id.tasksLL);
     }
 
-    public static com.example.llesson1.pillReminder.report.MonthlyReportFragment newInstance() {
+    public static MonthlyReportFragment newInstance() {
         Bundle args = new Bundle();
-        com.example.llesson1.pillReminder.report.MonthlyReportFragment fragment = new com.example.llesson1.pillReminder.report.MonthlyReportFragment();
+        MonthlyReportFragment fragment = new MonthlyReportFragment();
         fragment.setArguments(args);
         return fragment;
     }

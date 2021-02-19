@@ -81,10 +81,10 @@ public class ReminderFragment extends Fragment implements ReminderContract.View 
         linearLayout = (LinearLayout) root.findViewById(R.id.linearLayout);
     }
 
-    static com.example.llesson1.pillReminder.alarm.ReminderFragment newInstance(long id) {
+    static ReminderFragment newInstance(long id) {
         Bundle args = new Bundle();
         args.putLong(EXTRA_ID, id);
-        com.example.llesson1.pillReminder.alarm.ReminderFragment fragment = new com.example.llesson1.pillReminder.alarm.ReminderFragment();
+        ReminderFragment fragment = new ReminderFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -259,6 +259,6 @@ public class ReminderFragment extends Fragment implements ReminderContract.View 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+
     }
 }

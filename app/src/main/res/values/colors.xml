@@ -31,4 +31,6 @@
     <drawable name="touchFeedback">#CFD8DC</drawable>
 
     <color name="emergencyButton">#F10505</color>
+    <color name="addButton">#00D100</color>
+    <color name="deleteButtton">#BE1600</color>
 </resources>

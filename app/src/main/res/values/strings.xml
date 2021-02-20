@@ -53,4 +53,10 @@
     <string name="menu_stats">Monthly Report</string>
     <string name="reminder_message">It\'s time to take your medicine!</string>
     <string name="title_activity_location_app">Map</string>
+    <string name="add_contact_list">Add Contact List</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="add_Phone">Add</string>
+    <string name="delete_phone">Delete</string>
+    <string name="view_phone">View</string>
+    <string name="nb">NB: To delete a number, enter the number and click the red delete button</string>
 </resources>

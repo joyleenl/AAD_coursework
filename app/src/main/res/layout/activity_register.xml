@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EmergencyButton.Register">
+
+
+    <LinearLayout
+        android:id="@+id/upperlayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center"
+            android:hint="@string/enter_phone_number"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_35sdp"
+            android:layout_marginEnd="@dimen/_35sdp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/upperlayout">
+        <Button
+            android:id="@+id/addPN"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="@dimen/_20ssp"
+            android:text="@string/add_Phone"
+            android:textAllCaps="true"
+            android:backgroundTint="@color/addButton"/>
+        <Button
+            android:id="@+id/deletePN"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="@dimen/_20ssp"
+            android:text="@string/delete_phone"
+            android:textAllCaps="true"
+            android:backgroundTint="@color/deleteButtton"/>
+        <Button
+            android:id="@+id/viewPN"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="@string/view_phone"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_20ssp"
+            android:backgroundTint="@color/black"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/nb"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="wrap_content"
+        android:text="@string/nb"
+        android:textAllCaps="true"
+        android:textSize="@dimen/_13ssp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/layoutButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/nb"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

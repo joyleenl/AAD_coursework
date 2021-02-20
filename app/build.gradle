@@ -84,6 +84,9 @@ dependencies {
     //alarm compact calendar view
     implementation "com.github.sundeepk:compact-calendar-view:3.0.0"
 
+    //location
+   implementation 'com.google.android.gms:play-services-location:18.0.0'
+
 
 
     

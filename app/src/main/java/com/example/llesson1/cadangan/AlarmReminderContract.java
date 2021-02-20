@@ -1,4 +1,4 @@
-package com.example.llesson1.pillReminder;
+package com.example.llesson1.cadangan;
 
 import android.content.ContentResolver;
 import android.database.Cursor;

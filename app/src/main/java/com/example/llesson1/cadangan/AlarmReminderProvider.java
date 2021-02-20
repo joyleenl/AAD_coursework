@@ -1,4 +1,4 @@
-package com.example.llesson1.pillReminder;
+package com.example.llesson1.cadangan;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

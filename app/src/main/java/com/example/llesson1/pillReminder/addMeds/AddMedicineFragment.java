@@ -87,7 +87,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
 
     static AddMedicineFragment newInstance() {
         Bundle args = new Bundle();
-        com.example.llesson1.pillReminder.addMeds.AddMedicineFragment fragment = new com.example.llesson1.pillReminder.addMeds.AddMedicineFragment ();
+        AddMedicineFragment fragment = new AddMedicineFragment ();
         fragment.setArguments(args);
         return fragment;
     }
@@ -129,7 +129,7 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
         tvDoseQuantity = (EditText)root.findViewById(R.id.tv_dose_quantity);
         spinnerDoseUnits = (Spinner)root.findViewById(R.id.spinner_dose_units);
 // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.medications_shape_array, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -77,8 +77,8 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addMedNow = new TextView(this);
-        medicineAdapter = new com.example.llesson1.pillReminder.medicine.MedicineAdapter(new ArrayList<>(0));
+        addMedNow = new TextView(getContext());
+        medicineAdapter = new MedicineAdapter(new ArrayList<>(0));
 
         addMedNow.setOnClickListener(addMedOnClickListener);
     }

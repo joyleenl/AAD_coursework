@@ -51,6 +51,7 @@ public class MonthlyReportFragment extends Fragment implements MonthlyReportCont
     MonthlyReportFragment(View itemView){
         super(itemView);
         bindViews(itemView);
+        return;
     }
 
     private void bindViews (View root){

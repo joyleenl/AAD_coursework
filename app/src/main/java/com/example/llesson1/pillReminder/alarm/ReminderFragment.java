@@ -92,8 +92,8 @@ public class ReminderFragment extends Fragment implements ReminderContract.View 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ivIgnoreMed = new ImageView(this);
-        ivTakeMed = new ImageView(this);
+        ivIgnoreMed = new ImageView(getContext());
+        ivTakeMed = new ImageView(getContext());
         id = getArguments().getLong(EXTRA_ID);
 
         ivIgnoreMed.setOnClickListener((ivIgnoreOnClick));

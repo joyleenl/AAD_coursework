@@ -60,4 +60,6 @@
     <string name="view_phone">View</string>
     <string name="nb">NB: To delete a number, enter the number and click the red delete button</string>
     <string name="how_to_navigate">Instructions</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

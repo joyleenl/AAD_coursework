@@ -26,7 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Llesson1">
-        <activity android:name=".Popup"></activity>
+        <activity android:name=".magnify.camera2"></activity>
+        <activity android:name=".Popup" />
         <activity android:name=".EmergencyButton.Register" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".magnify.camera">
+    tools:context=".magnify.camera2">
 
     <TextureView
         android:id="@+id/viewFinder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottomlayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -68,20 +68,10 @@
         android:src="@drawable/ic_flash"
         app:layout_constraintTop_toBottomOf="@id/flashButton"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/app_name">
+        android:contentDescription="@string/turn_on_flash">
 
     </ImageView>
 
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="@id/bottomlayout"
-        app:layout_constraintTop_toTopOf="@id/bottomlayout"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </FrameLayout>
 
 
 

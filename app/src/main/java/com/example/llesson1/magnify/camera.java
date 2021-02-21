@@ -1,4 +1,4 @@
-package com.example.llesson1.magnify;
+/*package com.example.llesson1.magnify;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -129,7 +129,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
 
             //call the showCam class to be inititaed adn surface cerated method is calles
             showCam = new showCam(this, camera);
-            frameLayout.addView(showCam);*/
+            frameLayout.addView(showCam);
 
             //seekbar zoom
             int maxZoom = Camera.Parameters.getMaxZoom();
@@ -182,9 +182,9 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
                             }
                         }
                 );
-            }*/
+            }
 
-            // turn the flash on and off
+            //turn the flash on and off
             flashControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

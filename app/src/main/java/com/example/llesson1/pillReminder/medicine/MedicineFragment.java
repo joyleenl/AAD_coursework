@@ -89,6 +89,14 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
         return view;
     }
 
+    private void bindViews (View root) {
+        rvMedList = (RecyclerView) root.findViewById(R.id.medicine_list);
+        noMedIcon = (ImageView) root.findViewById(R.id.noMedIcon);
+        noMedText = (TextView) root.findViewById(R.id.noMedText);
+        addMedNow = (TextView) root.findViewById(R.id.add_med_now);
+        noMedView = (View) root.findViewById(R.id.no_med_view);
+        progressLoader = (ProgressBar) root.findViewById(R.id.progressLoader);
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

@@ -253,10 +253,4 @@ public class ReminderFragment extends Fragment implements ReminderContract.View 
         stopVibrator();
         getActivity().finish();
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    //unbind?
-    }
 }

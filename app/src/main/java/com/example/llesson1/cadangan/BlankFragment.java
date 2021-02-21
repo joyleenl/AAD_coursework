@@ -25,10 +25,7 @@ import java.util.List;
  */
 public class MedicineFragment extends Fragment implements MedicineContract.View, MedicineAdapter.OnItemClickListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final RecyclerView ARG_PARAM1 = rvMedList ;
-    private static final String ARG_PARAM2 = "param2";
+
 
     // TODO: Rename and change types of parameters
     private MedicineContract.Presenter presenter;
@@ -50,8 +47,7 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
     public static MedicineFragment newInstance(String param1, String param2) {
         MedicineFragment fragment = new MedicineFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,10 +56,8 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         medicineAdapter = new  MedicineAdapter(new ArrayList<>(0));
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
     }
 
     @Override

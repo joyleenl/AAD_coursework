@@ -88,9 +88,6 @@ public class MedicineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicince);
-        bind binding = MedicineActivity.inflate(inflater,this, true);
-        View view = binding.getRoot;
-        setContentView(view);
         setSupportActionBar(toolbar);
         datePickerButton = new RelativeLayout(this);
 

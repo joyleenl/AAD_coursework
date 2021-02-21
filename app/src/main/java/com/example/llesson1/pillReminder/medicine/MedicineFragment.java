@@ -54,10 +54,6 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
         }
     };
 
-    MedicineFragment (View itemView){
-        super(itemView);
-        bindViews(itemView);
-    }
     private void bindViews (View root) {
         rvMedList = (RecyclerView) root.findViewById(R.id.medicine_list);
         noMedIcon = (ImageView) root.findViewById(R.id.noMedIcon);
@@ -88,6 +84,7 @@ public class MedicineFragment extends Fragment implements MedicineContract.View,
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_medicine, container, false);
+        bindViews(view);
         setAdapter();
         return view;
     }

@@ -27,42 +27,18 @@ import java.util.List;
 
 
 public class MonthlyReportFragment extends Fragment implements MonthlyReportContract.View {
+    RecyclerView rvHistoryList;
+    ProgressBar progressLoader;
+    ImageView noMedIcon;
+    TextView noMedText;
+    View noMedView;
+    TextView filteringLabel;
+    LinearLayout tasksLL;
+    HistoryAdapter mHistoryAdapter;
+    MonthlyReportContract.Presenter presenter;
 
-    private RecyclerView rvHistoryList;
 
-    private ProgressBar progressLoader;
 
-    private ImageView noMedIcon;
-
-    private TextView noMedText;
-
-    private View noMedView;
-
-    private TextView filteringLabel;
-
-    private LinearLayout tasksLL;
-
-    private HistoryAdapter mHistoryAdapter;
-
-    private MonthlyReportContract.Presenter presenter;
-
-    private int
-
-    MonthlyReportFragment(View itemView){
-        super(itemView);
-        bindViews(itemView);
-        return;
-    }
-
-    private void bindViews (View root){
-        rvHistoryList = (RecyclerView) root.findViewById(R.id.rv_history_list);
-        progressLoader = (ProgressBar) root.findViewById(R.id.progressLoader);
-        noMedIcon = (ImageView) root.findViewById(R.id.noMedIcon);
-        noMedText = (TextView) root.findViewById(R.id.noMedText);
-        noMedView = (View) root.findViewById(R.id.no_med_view);
-        filteringLabel = (TextView) root.findViewById(R.id.filteringLabel);
-        tasksLL = (LinearLayout) root.findViewById(R.id.tasksLL);
-    }
 
     public static MonthlyReportFragment newInstance() {
         Bundle args = new Bundle();
@@ -88,8 +64,19 @@ public class MonthlyReportFragment extends Fragment implements MonthlyReportCont
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
+        bindViews(view);
         setAdapter();
         return view;
+    }
+
+    private void bindViews (View view){
+        rvHistoryList = (RecyclerView) view.findViewById(R.id.rv_history_list);
+        progressLoader = (ProgressBar) view.findViewById(R.id.progressLoader);
+        noMedIcon = (ImageView) view.findViewById(R.id.noMedIcon);
+        noMedText = (TextView) view.findViewById(R.id.noMedText);
+        noMedView = (View) view.findViewById(R.id.no_med_view);
+        filteringLabel = (TextView) view.findViewById(R.id.filteringLabel);
+        tasksLL = (LinearLayout) view.findViewById(R.id.tasksLL);
     }
 
     @Override
@@ -195,7 +182,9 @@ public class MonthlyReportFragment extends Fragment implements MonthlyReportCont
 
     @Override
     public void onDestroyView() {
+
         super.onDestroyView();
+        //unbind?
     }
 
     @Override

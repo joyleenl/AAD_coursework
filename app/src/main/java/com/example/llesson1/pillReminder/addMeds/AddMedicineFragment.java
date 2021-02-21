@@ -108,7 +108,6 @@ public class AddMedicineFragment extends Fragment implements AddMedicineContract
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_add_medicine, container, false);
-        super(rootView);
         bindViews(rootView);
         setCurrentTime();
         setSpinnerDoseUnits();

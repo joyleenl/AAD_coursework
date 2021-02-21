@@ -61,6 +61,7 @@ public class MedicineActivity extends AppCompatActivity {
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd", /*Locale.getDefault()*/Locale.ENGLISH);
 
     private boolean isExpanded = false;
+
     private View.OnClickListener datePickerOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -68,9 +69,7 @@ public class MedicineActivity extends AppCompatActivity {
         }
     };
 
-    MedicineActivity(View itemView) {
-        super();
-        bindViews(itemView);
+
     }
     private void bindViews (View root) {
         mCompactCalendarView = (CompactCalendarView) root.findViewById(R.id.compactcalendar_view);
@@ -89,7 +88,7 @@ public class MedicineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicince);
-        binding = MedicineActivity.inflate(getLayoutInflater());
+        bind binding = MedicineActivity.inflate(inflater,this, true);
         View view = binding.getRoot;
         setContentView(view);
         setSupportActionBar(toolbar);

@@ -67,19 +67,8 @@ public class ReminderFragment extends Fragment implements ReminderContract.View 
 
     private ReminderContract.Presenter presenter;
 
-    ReminderFragment (View itemView){
-        super();
-        bindViews(itemView);
-    }
 
-    private void bindViews (View root){
-        tvMedTime = (TextView) root.findViewById(R.id.tv_med_time);
-        tvMedicineName = (TextView) root.findViewById(R.id.tv_medicine_name);
-        tvDoseDetails = (TextView) root.findViewById(R.id.tv_dose_details);
-        ivIgnoreMed = (ImageView) root.findViewById(R.id.iv_ignore_med);
-        ivTakeMed = (ImageView) root.findViewById(R.id.iv_take_med);
-        linearLayout = (LinearLayout) root.findViewById(R.id.linearLayout);
-    }
+
 
     static ReminderFragment newInstance(long id) {
         Bundle args = new Bundle();
@@ -104,8 +93,17 @@ public class ReminderFragment extends Fragment implements ReminderContract.View 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reminder, container, false);
-
+        bindViews(view);
         return view;
+    }
+
+    private void bindViews (View root){
+        tvMedTime = (TextView) root.findViewById(R.id.tv_med_time);
+        tvMedicineName = (TextView) root.findViewById(R.id.tv_medicine_name);
+        tvDoseDetails = (TextView) root.findViewById(R.id.tv_dose_details);
+        ivIgnoreMed = (ImageView) root.findViewById(R.id.iv_ignore_med);
+        ivTakeMed = (ImageView) root.findViewById(R.id.iv_take_med);
+        linearLayout = (LinearLayout) root.findViewById(R.id.linearLayout);
     }
 
     @Override
@@ -259,6 +257,6 @@ public class ReminderFragment extends Fragment implements ReminderContract.View 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
+    //unbind?
     }
 }

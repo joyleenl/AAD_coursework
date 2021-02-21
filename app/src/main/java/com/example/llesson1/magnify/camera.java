@@ -43,6 +43,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
     showCam showCam;
     Switch flashControl;
     SeekBar zoomDrag;
+
     private static final int REQUEST_PERMISSIONS = 100;
 
     //api that allow us to control the flashlight and zoom
@@ -114,7 +115,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
                 Log.e(TAG, "Error during camera init");
                 return null;
             }
-        }
+        }*/
 
         @Override
         public float getMaxZoom () {

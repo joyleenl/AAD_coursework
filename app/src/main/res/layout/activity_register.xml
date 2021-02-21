@@ -23,40 +23,44 @@
             android:gravity="center"
             android:layout_marginStart="@dimen/_35sdp"
             android:layout_marginEnd="@dimen/_35sdp"
+            android:inputType="text"
             />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layoutButton"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_300sdp"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/upperlayout">
         <Button
             android:id="@+id/addPN"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:textSize="@dimen/_20ssp"
+            android:layout_margin="@dimen/_5sdp"
+            android:textSize="@dimen/_15ssp"
             android:text="@string/add_Phone"
             android:textAllCaps="true"
             android:backgroundTint="@color/addButton"/>
         <Button
             android:id="@+id/deletePN"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_87sdp"
             android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:textSize="@dimen/_20ssp"
+            android:layout_margin="@dimen/_5sdp"
+            android:textSize="@dimen/_15ssp"
             android:text="@string/delete_phone"
             android:textAllCaps="true"
             android:backgroundTint="@color/deleteButtton"/>
         <Button
             android:id="@+id/viewPN"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:text="@string/view_phone"
             android:textAllCaps="true"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_15ssp"
             android:backgroundTint="@color/black"/>
 
 

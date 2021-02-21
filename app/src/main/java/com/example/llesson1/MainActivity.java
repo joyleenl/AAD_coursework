@@ -26,8 +26,8 @@ import android.widget.Toast;
 
 import com.example.llesson1.EmergencyButton.Register;
 import com.example.llesson1.EmergencyButton.dbHandler;
-import com.example.llesson1.magnify.camera;
 import com.example.llesson1.notes.activities.Notes;
+import com.example.llesson1.magnify.camera2;
 import com.example.llesson1.pillReminder.medicine.MedicineActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationSettingsRequest;
@@ -103,7 +103,7 @@ Intent mIntent;
 
         //open notes
         notesButton = (Button) findViewById(R.id.noteButton);
-        howTo.setOnClickListener(new View.OnClickListener(){
+        notesButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(),Notes.class);
@@ -113,17 +113,17 @@ Intent mIntent;
 
         //open magnify
         magnify = (Button) findViewById(R.id.Magnify);
-        howTo.setOnClickListener(new View.OnClickListener() {
+        magnify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inte = new Intent(getApplicationContext(), camera.class);
+                Intent inte = new Intent(getApplicationContext(), camera2.class);
                 startActivity(inte);
             }
         });
 
         //open pill
         pill = (Button) findViewById(R.id.Pill);
-        howTo.setOnClickListener(new View.OnClickListener() {
+        pill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentt = new Intent(getApplicationContext(), MedicineActivity.class);

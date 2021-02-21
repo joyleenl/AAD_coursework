@@ -38,35 +38,26 @@ dbHandler myDB;
         myDB= new dbHandler(this);
 
         //add button to add phone numeber data to the db
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String addString = phoneNumber.getText().toString();
-                //call add data
-                addData (addString);
-                Toast.makeText(Register.this, "Data Added", Toast.LENGTH_SHORT).show();
-                phoneNumber.setText("");
-            }
+        addButton.setOnClickListener(v -> {
+            String addString = phoneNumber.getText().toString();
+            //call add data
+            addData (addString);
+            Toast.makeText(Register.this, "Data Added", Toast.LENGTH_SHORT).show();
+            phoneNumber.setText("");
         });
         //when delete button is clicked, remove data fr db
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sqLiteDatabase = myDB.getWritableDatabase();
-                String deleteString = phoneNumber.getText().toString();
-                //call the delete data funct
-                DeleteData(deleteString);
-                Toast.makeText(Register.this, "DATA DELETED", Toast.LENGTH_SHORT).show();
-                phoneNumber.setText("");
-            }
+        deleteButton.setOnClickListener(v -> {
+            sqLiteDatabase = myDB.getWritableDatabase();
+            String deleteString = phoneNumber.getText().toString();
+            //call the delete data funct
+            DeleteData(deleteString);
+            Toast.makeText(Register.this, "DATA DELETED", Toast.LENGTH_SHORT).show();
+            phoneNumber.setText("");
         });
         // load data fr db to be seen by user
-        viewButton.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //call load data
-                loadData();
-            }
+        viewButton.setOnClickListener((v -> {
+            //call load data
+            loadData();
         }));
     }
 

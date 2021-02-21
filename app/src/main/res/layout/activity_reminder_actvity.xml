@@ -19,7 +19,7 @@
             app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/ic_clear"
             android:background="@color/colorPrimary"
-            app:popupTheme="@style/Base.Theme.DesignDemo" />
+            app:popupTheme="@style/AppTheme" />
 
         <TextView
             android:layout_width="match_parent"

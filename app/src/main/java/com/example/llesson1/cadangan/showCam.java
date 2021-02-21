@@ -1,4 +1,4 @@
-package com.example.llesson1.magnify;
+package com.example.llesson1.cadangan;
 
 import android.content.Context;
 import android.content.res.Configuration;

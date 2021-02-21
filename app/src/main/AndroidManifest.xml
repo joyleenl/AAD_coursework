@@ -14,10 +14,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera2.full" />
 
-    <uses-feature android:name="android.hardware.camera.flash" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -41,12 +39,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".cadangan.LocationApp"
-            android:label="@string/title_activity_location_app" />
+
         <activity android:name=".pillReminder.medicine.MedicineActivity" />
-        <activity android:name=".pillReminder.pillReminderMain" />
-        <activity android:name=".magnify.camera" />
+
         <activity
             android:name=".notes.activities.Notes"
             android:label="@string/notes"

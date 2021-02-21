@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,40 +8,37 @@
 
     <TextureView
         android:id="@+id/viewFinder"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="@id/bottomlayout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_above="@id/zoomDrag"
+        android:layout_alignParentTop="true"/>
 
-    <LinearLayout
-        android:id="@+id/bottomlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/_25sdp"
-        android:background="@color/bottomBG"
-        app:layout_constraintBottom_toBottomOf="parent">
 
-    </LinearLayout>
 
     <SeekBar
         android:id="@+id/zoomDrag"
-        android:layout_width="@dimen/_180sdp"
+        android:layout_width="@dimen/_400sdp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_200sdp"
         android:contentDescription="@string/app_name"
-        android:padding="@dimen/_5sdp"
+        android:padding="@dimen/_10sdp"
         android:max="200"
-        android:progress="80"
+        android:progress="0"
         style="@style/seekBarstyle"
-        app:layout_constraintBottom_toBottomOf="@id/bottomlayout"
-        app:layout_constraintTop_toTopOf="@id/bottomlayout"
-        app:layout_constraintStart_toStartOf="@id/bottomlayout"/>
+        android:layout_alignParentBottom="true"/>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/_100sdp"
+        android:layout_marginBottom="@dimen/_11sdp"
+        android:text="Zoom slider"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp" />
 
     <Switch
         android:id="@+id/flashButton"
@@ -53,8 +50,7 @@
         android:padding="@dimen/_5sdp"
         android:text="@string/turn_on_flash"
         android:enabled="false"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_alignParentRight="true"
         tools:ignore="UseSwitchCompatOrMaterialXml">
 
     </Switch>
@@ -62,22 +58,15 @@
     <ImageView
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
+        android:left="@id/flashButton"
         android:layout_marginStart="@dimen/_200sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_64sdp"
+        android:contentDescription="@string/turn_on_flash"
         android:padding="@dimen/_5sdp"
-        android:src="@drawable/ic_flash"
-        app:layout_constraintTop_toBottomOf="@id/flashButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/turn_on_flash">
+        android:src="@drawable/ic_flash">
 
     </ImageView>
 
 
-
-
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

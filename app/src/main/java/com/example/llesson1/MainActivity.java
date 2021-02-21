@@ -10,14 +10,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Camera;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,193 +32,181 @@ import com.example.llesson1.magnify.camera2;
 import com.example.llesson1.pillReminder.medicine.MedicineActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationSettingsRequest;
-import com.kishan.askpermission.AskPermission;
-import com.kishan.askpermission.ErrorCallback;
-import com.kishan.askpermission.PermissionCallback;
-import com.kishan.askpermission.PermissionInterface;
+
 
 import java.util.ArrayList;
 
 import static android.Manifest.permission.CALL_PHONE;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
-Button addContact, emergency, howTo,notesButton , magnify,pill;
-private FusedLocationProviderClient client;
-dbHandler myDB;
-private final int REQUEST_CHECK_CODE =8989;
-private LocationSettingsRequest.Builder builder;
-String latitude="", longitude= "";
-private static final int REQUEST_LOCATION = 1;
+    Button addContact, emergency, howTo, notesButton, magnify, pill;
+    private FusedLocationProviderClient client;
+    dbHandler myDB;
+    private final int REQUEST_CHECK_CODE = 8989;
+    private LocationSettingsRequest.Builder builder;
+    String latitude = "", longitude = "";
+    private static final int REQUEST_LOCATION = 1;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
 
-LocationManager locationManager;
-Intent mIntent;
+    LocationManager locationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //set the how to popup button activity
-        howTo = (Button) findViewById(R.id.Howto);
-        howTo.setOnClickListener(new View.OnClickListener(){
+        howTo = findViewById(R.id.Howto);
+        howTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Popup.class);
+                Intent i = new Intent(getApplicationContext(), Popup.class);
                 startActivity(i);
             }
         });
-        addContact= (Button) findViewById(R.id.ContactList);
-        emergency = (Button) findViewById(R.id.Emergency);
-        myDB = new dbHandler (this);
+
+        addContact = findViewById(R.id.ContactList);
+        emergency = findViewById(R.id.Emergency);
+        myDB = new dbHandler(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             onGPS();
-        }
-        else {
+        } else {
             startTrack();
         }
-        addContact.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick (View v) {
-                Intent intent = new Intent(getApplicationContext(), Register.class);
-                startActivity(intent);
-            }
-        }  );
-
-        emergency.setOnLongClickListener(new View.OnLongClickListener(){
-            @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(getApplicationContext(),"emergency button activated",Toast.LENGTH_SHORT).show();
-                return false;
-
-            }
+        addContact.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Register.class);
+            startActivity(intent);
         });
 
-        emergency.setOnClickListener(new View.OnClickListener(){
+        emergency.setOnLongClickListener(v -> {
+            Toast.makeText(getApplicationContext(), "emergency button activated", Toast.LENGTH_SHORT).show();
+            return false;
+
+        });
+
+        emergency.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadData();
-            }
+
+                if (ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.SEND_SMS) !=
+                        PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(MainActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();;
+                    ;
+                    // Permission not yet granted. Use requestPermissions().
+                    // MY_PERMISSIONS_REQUEST_SEND_SMS is an app-defined int constant. The callback method gets the result of the request.
+                    ActivityCompat.requestPermissions(MainActivity.this,
+                            new String[]{Manifest.permission.SEND_SMS},
+                            MY_PERMISSIONS_REQUEST_SEND_SMS);
+                }else {loadData();};
+
+                    }
         });
 
 
         //open notes
-        notesButton = (Button) findViewById(R.id.noteButton);
-        notesButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(),Notes.class);
-                startActivity(in);
-            }
+        notesButton = findViewById(R.id.noteButton);
+        notesButton.setOnClickListener(v -> {
+            Intent in = new Intent(getApplicationContext(), Notes.class);
+            startActivity(in);
         });
 
         //open magnify
-        magnify = (Button) findViewById(R.id.Magnify);
-        magnify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent inte = new Intent(getApplicationContext(), camera2.class);
-                startActivity(inte);
-            }
+        magnify = findViewById(R.id.Magnify);
+        magnify.setOnClickListener(v -> {
+            Intent inte = new Intent(getApplicationContext(), camera2.class);
+            startActivity(inte);
         });
 
         //open pill
-        pill = (Button) findViewById(R.id.Pill);
-        pill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentt = new Intent(getApplicationContext(), MedicineActivity.class);
-                startActivity(intentt);
-            }
+        pill = findViewById(R.id.Pill);
+        pill.setOnClickListener(v -> {
+            Intent intentt = new Intent(getApplicationContext(), MedicineActivity.class);
+            startActivity(intentt);
         });
 
 
     }
 
 
-//get the data fr db for emergency button
+    //get the data fr db for emergency button
     private void loadData() {
 
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.getListContent();
         //if there is no data in db prompt this
-        if(data.getCount()==0){
+        if (data.getCount() == 0) {
             Toast.makeText(this, "there isn't any data", Toast.LENGTH_SHORT).show();
         }
         //if there is data,send this message
-        else {
-            String msg = "EMERGENCY! I NEED HELP!!! MY LOCATION LATITUDE:" + latitude +"LONGITUDE: " + longitude;
-            String number ="";
+        else{
+            SmsManager.getDefault();
+            SQLiteDatabase db = myDB.getReadableDatabase();
+            Cursor res = db.rawQuery("select * from contactlist_data", null);
+            String msg = "EMERGENCY! I NEED HELP!!! MY LOCATION LATITUDE:" + latitude + "LONGITUDE: " + longitude;
+            String number = "";
             // get the number fr list of phone number
-            while (data.moveToNext()){
+            while (data.moveToNext()) {
 
                 theList.add(data.getString(1));
-                number= number+data.getString(1)  + (data.isLast()?"":";");
-                call();
+                number = number + data.getString(1) + (data.isLast() ? "" : ";");
+                sendSms(number, msg, true);
             }
-            if(!theList.isEmpty()){
-                sendSms(number,msg,true);
-            }
-       }
-    }
-// send the sms
-    private void sendSms(String number, String msg, boolean b) {
-        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
-        Uri.parse("smsto:"+number);
-        smsIntent.putExtra("smsbody", msg);
-        startActivity(smsIntent);
-    }
-
-    private void call() {
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:1000"));
-        //if get permission from phone, then start  the activity
-        if(ContextCompat.checkSelfPermission(getApplicationContext(),CALL_PHONE)== PackageManager.PERMISSION_GRANTED){
-            startActivity(intent);
-        }else {
-            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-                requestPermissions(new String[]{CALL_PHONE},1);
+            res.close();
             }
         }
+
+
+    // send the sms
+    private void sendSms(String number, String msg, boolean b) {
+        //cretae inetnt
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+        //set data fr the inent as the phine number
+        smsIntent.setData(Uri.parse("smsto:" + number));
+        smsIntent.putExtra("smsbody", msg);
+        // If package resolves (target app installed), send intent.
+        if (smsIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(smsIntent);
+        } else {
+            Toast.makeText(this, "Can't resolve app for ACTION_SENDTO Intent", Toast.LENGTH_SHORT).show();
+        }
     }
+
+
     // when starting the app
     private void startTrack() {
 
-        if (ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION )
-        != PackageManager.PERMISSION_GRANTED
-        && ActivityCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
-        }
-        else {
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        } else {
             Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if(locationGPS!=null){
+            if (locationGPS != null) {
                 double lat = locationGPS.getLatitude();
                 double lon = locationGPS.getLongitude();
                 latitude = String.valueOf(lat);
-                longitude= String.valueOf(lon);
-            }
-            else {
+                longitude = String.valueOf(lon);
+            } else {
                 Toast.makeText(this, "Location Unknown", Toast.LENGTH_SHORT).show();
             }
         }
 
     }
+
     //enable GPS
     private void onGPS() {
-        final AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
             }
-        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        final AlertDialog alertDialog =builder.create();
+        }).setNegativeButton("NO", (dialog, which) -> dialog.cancel());
+        final AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 

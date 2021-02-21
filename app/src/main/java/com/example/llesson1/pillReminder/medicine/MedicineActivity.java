@@ -71,24 +71,22 @@ public class MedicineActivity extends AppCompatActivity {
 
 
 
-    private void bindViews (View root) {
-        mCompactCalendarView = (CompactCalendarView) root.findViewById(R.id.compactcalendar_view);
-        datePickerTextView = (TextView) root.findViewById(R.id.date_picker_text_view);
-        datePickerButton = (RelativeLayout) root.findViewById(R.id.date_picker_button);
-        toolbar =(Toolbar) root.findViewById(R.id.toolbar);
-        collapsingToolbarLayout=(CollapsingToolbarLayout) root.findViewById(R.id.collapsingToolbarLayout);
-        appBarLayout = (AppBarLayout) root.findViewById(R.id.app_bar_layout);
-        contentFrame = (FrameLayout) root.findViewById(R.id.contentFrame);
-        fabAddTask = (FloatingActionButton)root.findViewById(R.id.fab_add_task);
-        coordinatorLayout = (CoordinatorLayout)root.findViewById(R.id.coordinatorLayout);
-        arrow = (ImageView) root.findViewById(R.id.date_picker_arrow);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicince);
         setSupportActionBar(toolbar);
+        mCompactCalendarView =findViewById(R.id.compactcalendar_view);
+        datePickerTextView = findViewById(R.id.date_picker_text_view);
+        datePickerButton = findViewById(R.id.date_picker_button);
+        toolbar =findViewById(R.id.toolbar);
+        collapsingToolbarLayout=findViewById(R.id.collapsingToolbarLayout);
+        appBarLayout = findViewById(R.id.app_bar_layout);
+        contentFrame = findViewById(R.id.contentFrame);
+        fabAddTask =findViewById(R.id.fab_add_task);
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
+        arrow = findViewById(R.id.date_picker_arrow);
         datePickerButton = new RelativeLayout(this);
 
         datePickerButton.setOnClickListener(datePickerOnClick);

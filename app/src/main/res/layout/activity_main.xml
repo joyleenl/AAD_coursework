@@ -48,6 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/noteButton"
         app:layout_constraintTop_toBottomOf="@+id/Pill"
+        android:onClick="smsSendMessage"
         />
 
 

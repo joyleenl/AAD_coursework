@@ -73,9 +73,9 @@ public class CreateNote extends AppCompatActivity {
                 saveNote();
             }
         });
-        selectedNoteColor = "#33333";
+        selectedNoteColor = "#333333";
 
-        if (getIntent().getBooleanExtra("isVieworUpdate", false)){
+        if (getIntent().getBooleanExtra("isViewOrUpdate", false)){
             alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
             setViewOnUpdateNote();
         }

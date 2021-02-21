@@ -1,18 +1,26 @@
 package com.example.llesson1.magnify;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.math.MathUtils;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
+import android.hardware.camera2.CameraMetadata;
+import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.media.ImageReader;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -25,9 +33,11 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.llesson1.EmergencyButton.Zoom;
 import com.example.llesson1.R;
 
 import java.io.File;
+import java.util.Arrays;
 
 import static android.content.pm.PackageManager.FEATURE_CAMERA_ANY;
 import static android.content.pm.PackageManager.FEATURE_CAMERA_FLASH;
@@ -36,6 +46,7 @@ public class camera2 extends AppCompatActivity {
     TextureView textureView;
     SeekBar zoomDrag;
     Switch flashControl;
+    private int maxZoom;
     private static final SparseIntArray ORIENTATIONS= new SparseIntArray();
 
 
@@ -50,7 +61,12 @@ public class camera2 extends AppCompatActivity {
     private String cameraId;
     CameraDevice cameraDevice;
     private Size imageDimensions;
+    private ImageReader imageReader;
+    Camera camera;
     CameraManager cameraManager;
+    CameraCaptureSession cameraCaptureSession;
+    CaptureRequest captureRequest;
+    CaptureRequest.Builder captureRequestBuilder;
     Handler mBgHandler;
     HandlerThread mBgThread;
 
@@ -83,13 +99,11 @@ public class camera2 extends AppCompatActivity {
         zoomDrag.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                //specify method to open cam
-
-                try {
-                    openCamera();
+                /*try {
+                    cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, mBgHandler);
                 } catch (CameraAccessException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
 
             @Override
@@ -118,7 +132,12 @@ public class camera2 extends AppCompatActivity {
     TextureView.SurfaceTextureListener textureListener = new TextureView.SurfaceTextureListener() {
         @Override
         public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surface, int width, int height) {
-
+            //specify method to open cam
+            try {
+                openCamera();
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -128,6 +147,7 @@ public class camera2 extends AppCompatActivity {
 
         @Override
         public boolean onSurfaceTextureDestroyed(@NonNull SurfaceTexture surface) {
+
             return false;
         }
 
@@ -171,10 +191,40 @@ public class camera2 extends AppCompatActivity {
         texture.setDefaultBufferSize(imageDimensions.getHeight(),imageDimensions.getWidth());
         Surface surface = new Surface(texture);
         //initialize camrea request to the builder
-
+        captureRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
         // add target to surface
-
+        captureRequestBuilder.addTarget(surface);
         //update preview
+        cameraDevice.createCaptureSession(Arrays.asList(surface), new CameraCaptureSession.StateCallback() {
+            @Override
+            public void onConfigured(CameraCaptureSession session) {
+                if (cameraDevice ==null )
+                {
+                    return;
+                }
+                cameraCaptureSession = session;
+                try {
+                    updatePreview();
+                } catch (CameraAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onConfigureFailed(@NonNull CameraCaptureSession session) {
+                Toast.makeText(getApplicationContext(), "Config changed", Toast.LENGTH_SHORT).show();
+
+            }
+        }, null);
+    }
+
+    private void updatePreview() throws CameraAccessException {
+        if(cameraDevice==null) {
+            return;
+        }
+        captureRequestBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
+
+        cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(),null, mBgHandler);
     }
 
     private void openCamera() throws CameraAccessException {
@@ -246,7 +296,10 @@ public class camera2 extends AppCompatActivity {
         mBgThread = null;
     }
 
-    /*// turn the flash on and off
+
+    }
+
+    /*/ turn the flash on and off
             flashControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -271,4 +324,3 @@ public class camera2 extends AppCompatActivity {
 
 
 }*/
-}

@@ -70,7 +70,7 @@ public class MedicineActivity extends AppCompatActivity {
     };
 
 
-    }
+
     private void bindViews (View root) {
         mCompactCalendarView = (CompactCalendarView) root.findViewById(R.id.compactcalendar_view);
         datePickerTextView = (TextView) root.findViewById(R.id.date_picker_text_view);

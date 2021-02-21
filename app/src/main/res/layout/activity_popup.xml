@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Popup">
+
+    <TextView
+        android:id="@+id/hi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hi! welcome on Helping hands! This instruction will show you how to use this app!"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Magnify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="The blue magnify button is used for zooming text using camera. to use the zoom just slide the button on the bottom left of the screen. if you need more light, you can press the flash button on top right!"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/hi"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/pillbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="the yellow pill button is used for reminding you the medicine you need to drink! add the medicine using the plus button on lower right of the screen and set everything. it will remind you at the designated time!"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/Magnify"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="the green notes button will help you to remember things! to add the note, just press the plus button at the bottom of the screen and after filling in the notes just press the check button on the top right and voila! you're done "
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/pillbutton"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/Emergencybutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="the red emergency button will trigger an sms containing your location to certain people in case of emergency. to add the number, you can add it on the top left corner of the main sreen!"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/notes"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hope"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="i hope this app wil give alot of help for you! "
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_18sdp"
+        app:layout_constraintTop_toBottomOf="@id/Emergencybutton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/backbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Main Menu"
+        android:backgroundTint="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/hope"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

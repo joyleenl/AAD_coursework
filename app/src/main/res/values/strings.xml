@@ -59,4 +59,5 @@
     <string name="delete_phone">Delete</string>
     <string name="view_phone">View</string>
     <string name="nb">NB: To delete a number, enter the number and click the red delete button</string>
+    <string name="how_to_navigate">Instructions</string>
 </resources>

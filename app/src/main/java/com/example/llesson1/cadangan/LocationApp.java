@@ -1,4 +1,4 @@
-package com.example.llesson1.EmergencyButton;
+package com.example.llesson1.cadangan;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -20,7 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class LocationApp extends FragmentActivity implements OnMapReadyCallback {
+/*public class LocationApp extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private LocationManager locationManager;
@@ -56,7 +56,7 @@ public class LocationApp extends FragmentActivity implements OnMapReadyCallback 
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
-     */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -99,4 +99,4 @@ public class LocationApp extends FragmentActivity implements OnMapReadyCallback 
             e.printStackTrace();
         }
     }
-}
+}*/

@@ -26,7 +26,9 @@ import android.widget.Toast;
 
 import com.example.llesson1.EmergencyButton.Register;
 import com.example.llesson1.EmergencyButton.dbHandler;
+import com.example.llesson1.magnify.camera;
 import com.example.llesson1.notes.activities.Notes;
+import com.example.llesson1.pillReminder.medicine.MedicineActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.kishan.askpermission.AskPermission;
@@ -40,7 +42,7 @@ import static android.Manifest.permission.CALL_PHONE;
 
 public class MainActivity extends AppCompatActivity  {
 
-Button addContact, emergency;
+Button addContact, emergency, howTo,notesButton , magnify,pill;
 private FusedLocationProviderClient client;
 dbHandler myDB;
 private final int REQUEST_CHECK_CODE =8989;
@@ -55,8 +57,17 @@ Intent mIntent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addContact= findViewById(R.id.ContactList);
-        emergency = findViewById(R.id.Emergency);
+        //set the how to popup button activity
+        howTo = (Button) findViewById(R.id.Howto);
+        howTo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Popup.class);
+                startActivity(i);
+            }
+        });
+        addContact= (Button) findViewById(R.id.ContactList);
+        emergency = (Button) findViewById(R.id.Emergency);
         myDB = new dbHandler (this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
@@ -91,20 +102,40 @@ Intent mIntent;
 
 
         //open notes
-        Button notesButton = (Button) findViewById(R.id.noteButton);
-        notesButton.setOnClickListener(new View.OnClickListener() {
-
+        notesButton = (Button) findViewById(R.id.noteButton);
+        howTo.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Notes.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                Intent in = new Intent(getApplicationContext(),Notes.class);
+                startActivity(in);
             }
+        });
 
+        //open magnify
+        magnify = (Button) findViewById(R.id.Magnify);
+        howTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inte = new Intent(getApplicationContext(), camera.class);
+                startActivity(inte);
+            }
+        });
+
+        //open pill
+        pill = (Button) findViewById(R.id.Pill);
+        howTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentt = new Intent(getApplicationContext(), MedicineActivity.class);
+                startActivity(intentt);
+            }
         });
 
 
     }
-//get the data fr db
+
+
+//get the data fr db for emergency button
     private void loadData() {
 
         ArrayList<String> theList = new ArrayList<>();
@@ -149,7 +180,7 @@ Intent mIntent;
             }
         }
     }
-
+    // when starting the app
     private void startTrack() {
 
         if (ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION )
@@ -172,7 +203,7 @@ Intent mIntent;
         }
 
     }
-
+    //enable GPS
     private void onGPS() {
         final AlertDialog.Builder builder= new AlertDialog.Builder(this);
         builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("yes", new DialogInterface.OnClickListener() {

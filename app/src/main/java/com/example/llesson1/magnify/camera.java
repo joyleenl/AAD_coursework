@@ -54,7 +54,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
         setContentView(R.layout.activity_camera);
         reqPermission();
         zoomDrag = (SeekBar) findViewById(R.id.zoomDrag);
-        flashControl = findViewById(R.id.flashButton);
+        flashControl = (Switch) findViewById(R.id.flashButton);
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         frameLayout = (FrameLayout) findViewById(R.id.frameLayout);
         //check if device has camera
@@ -70,7 +70,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
         } else {
             Toast.makeText(com.example.llesson1.magnify.camera.this, "This device has no camera", Toast.LENGTH_SHORT).show();
         }
-        @Override
+        /*@Override
         public float getCurrentZoom () {
             return zoomLevel;
         }
@@ -129,10 +129,10 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
 
             //call the showCam class to be inititaed adn surface cerated method is calles
             showCam = new showCam(this, camera);
-            frameLayout.addView(showCam);
+            frameLayout.addView(showCam);*/
 
             //seekbar zoom
-            int MaxZoom = parameters.getMaxZoom();
+            int maxZoom = Camera.Parameters.getMaxZoom();
             zoomDrag.setProgress(0);
             zoomDrag.setMax(maxZoom * 100);
 
@@ -156,7 +156,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
             });
 
 
-            int mProgress;
+            /*int mProgress;
             {
                 minZoom = getMinZoom();
                 maxZoom = getMaxZoom() - 1;
@@ -182,7 +182,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
                             }
                         }
                 );
-            }
+            }*/
 
             // turn the flash on and off
             flashControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -211,7 +211,7 @@ public class camera extends AppCompatActivity implements PermissionCallback, Err
         }
 
 
-    }
+    //}
 
     //request for permission
     private void reqPermission() {

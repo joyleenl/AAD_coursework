@@ -21,15 +21,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Magnify"/>
-    <ImageView
+    <Button
         android:id="@+id/Howto"
-        android:layout_width="@dimen/_40sdp"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_12sdp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_questionmark"
-        app:tint="@color/black"
+        android:text="@string/how_to_navigate"
+        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Pill"/>

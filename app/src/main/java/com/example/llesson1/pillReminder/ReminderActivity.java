@@ -102,8 +102,7 @@ public class ReminderActivity extends AppCompatActivity implements
 
                 setTitle("Add Reminder Details");
 
-                // Invalidate the options menu, so the "Delete" menu option can be hidden.
-                // (It doesn't make sense to delete a reminder that hasn't been created yet.)
+                // Invalidate the options menu, so the "Delete" menu option can be hidden since it doesn't make snese to delete a reminder that hasn't been build ye
                 invalidateOptionsMenu();
             } else {
 
@@ -371,10 +370,8 @@ public class ReminderActivity extends AppCompatActivity implements
             return true;
         }
 
-        /**
-         * This method is called after invalidateOptionsMenu(), so that the
-         * menu can be updated (some menu items can be hidden or made visible).
-         */
+        //This method is called after invalidateOptionsMenu(), so that the menu can be updated (some menu items can be hidden or made visible).
+
         @Override
         public boolean onPrepareOptionsMenu(Menu menu) {
             super.onPrepareOptionsMenu(menu);

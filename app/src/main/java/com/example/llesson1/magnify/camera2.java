@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -39,6 +40,7 @@ import static android.content.pm.PackageManager.FEATURE_CAMERA_FLASH;
 public class camera2 extends AppCompatActivity {
     TextureView textureView;
     SeekBar zoomDrag;
+    Zoom zoom;
     Switch flashControl;
     private int maxZoom;
     private static final SparseIntArray ORIENTATIONS= new SparseIntArray();
@@ -56,14 +58,13 @@ public class camera2 extends AppCompatActivity {
     CameraDevice cameraDevice;
     private Size imageDimensions;
     private ImageReader imageReader;
-    Camera camera;
     CameraManager cameraManager;
     CameraCaptureSession cameraCaptureSession;
     CaptureRequest captureRequest;
     CaptureRequest.Builder captureRequestBuilder;
     Handler mBgHandler;
     HandlerThread mBgThread;
-
+    CameraCharacteristics characteristics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,21 +94,25 @@ public class camera2 extends AppCompatActivity {
         zoomDrag.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                /*try {
+                zoom = new Zoom(characteristics);
+                zoom.setZoom(captureRequestBuilder, (float) 4.0*progress/100);
+                try {
                     cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, mBgHandler);
                 } catch (CameraAccessException e) {
                     e.printStackTrace();
-                }*/
+                }
+
+
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                System.out.println("!!! start tracking");
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                System.out.println("!!! stop tracking");
             }
         });
     }
@@ -227,7 +232,7 @@ public class camera2 extends AppCompatActivity {
         //get cameraID
         cameraId = manager.getCameraIdList()[0];
         //get proprerty using camera id
-        CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
+        characteristics = manager.getCameraCharacteristics(cameraId);
 
         //specify param
         StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);

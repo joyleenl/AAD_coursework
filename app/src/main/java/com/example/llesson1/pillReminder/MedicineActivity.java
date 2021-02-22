@@ -55,7 +55,7 @@ public class MedicineActivity extends AppCompatActivity implements LoaderManager
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-                Intent intent = new Intent(MedicineActivity.this, ReminderActivity.AddReminderActivity.class);
+                Intent intent = new Intent(MedicineActivity.this, ReminderActivity.class);
 
                 Uri currentVehicleUri = ContentUris.withAppendedId(AlarmReminderContract.AlarmReminderEntry.CONTENT_URI, id);
 
@@ -73,7 +73,7 @@ public class MedicineActivity extends AppCompatActivity implements LoaderManager
         mAddReminderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ReminderActivity.AddReminderActivity.class);
+                Intent intent = new Intent(v.getContext(), ReminderActivity.class);
                 startActivity(intent);
             }
         });

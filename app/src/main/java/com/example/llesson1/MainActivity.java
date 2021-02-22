@@ -29,7 +29,7 @@ import com.example.llesson1.EmergencyButton.Register;
 import com.example.llesson1.EmergencyButton.dbHandler;
 import com.example.llesson1.notes.activities.Notes;
 import com.example.llesson1.magnify.camera2;
-import com.example.llesson1.pillReminder.medicine.MedicineActivity;
+import com.example.llesson1.pillReminder.MedicineActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationSettingsRequest;
 

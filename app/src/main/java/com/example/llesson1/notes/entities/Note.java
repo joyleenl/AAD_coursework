@@ -32,6 +32,11 @@ public class Note implements Serializable {
     @ColumnInfo (name = "color")
     private String color;
 
+
+    public Note() {
+        color = "#330000";
+    }
+
     public int getId() {
         return id;
     }

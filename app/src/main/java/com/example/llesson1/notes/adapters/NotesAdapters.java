@@ -29,8 +29,7 @@ public class NotesAdapters extends RecyclerView.Adapter<NotesAdapters.NoteViewHo
     private Timer timer;
     private List<Note> notesSource;
 
-    public NotesAdapters(List<Note> notes, NotesListeners notesListeners)
-    {
+    public NotesAdapters(List<Note> notes, NotesListeners notesListeners) {
         this.notes = notes;
         this.notesListeners = notesListeners;
         notesSource = notes;
@@ -70,7 +69,7 @@ public class NotesAdapters extends RecyclerView.Adapter<NotesAdapters.NoteViewHo
         return position;
     }
 
-    static class NoteViewHolder extends RecyclerView.ViewHolder{
+    static class NoteViewHolder extends RecyclerView.ViewHolder {
 
         TextView textTitle, textSubtitle, textDateTime;
         LinearLayout layoutNote;
@@ -83,46 +82,51 @@ public class NotesAdapters extends RecyclerView.Adapter<NotesAdapters.NoteViewHo
             layoutNote = itemView.findViewById(R.id.layoutNote);
         }
 
-    void setNote(Note note) {
+        void setNote(Note note) {
             textTitle.setText(note.getTitle());
             //if subtitle is empty, remove from view
-            if(note.getSubtitle().trim().isEmpty()){
+            if (note.getSubtitle().trim().isEmpty()) {
                 textSubtitle.setVisibility((View.GONE));
-            }else{
+            } else {
                 textSubtitle.setText(note.getSubtitle());
             }
             textDateTime.setText(note.getDateTime());
 
-        GradientDrawable gradientDrawable = (GradientDrawable) layoutNote.getBackground();
-        if (note.getColor() != null) {
-            gradientDrawable.setColor(Color.parseColor(note.getColor()));
+            GradientDrawable gradientDrawable = (GradientDrawable) layoutNote.getBackground();
+            System.out.println("COLOR" + note.getColor());
+            if (note.getColor() != null) {
+                try {
+                    gradientDrawable.setColor(Color.parseColor(note.getColor()));
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e);
+                }
+            } else {
 
-        }else
-        {
-            gradientDrawable.setColor(Color.parseColor("#333333")
-            );
+                gradientDrawable.setColor(Color.parseColor("#333333"));
+
+
+            }
         }
-    }
 
     }
 
-    public  void searchNotes (final String searchKeyword) {
+    public void searchNotes(final String searchKeyword) {
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (searchKeyword.trim().isEmpty()){
+                if (searchKeyword.trim().isEmpty()) {
                     notes = notesSource;
-                }else {
+                } else {
                     ArrayList<Note> temp = new ArrayList<>();
-                    for (Note note : notesSource){
+                    for (Note note : notesSource) {
                         if (note.getTitle().toLowerCase().contains(searchKeyword.toLowerCase())
-                        || note.getSubtitle().toLowerCase().contains(searchKeyword.toLowerCase())
-                        || note.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())){
+                                || note.getSubtitle().toLowerCase().contains(searchKeyword.toLowerCase())
+                                || note.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())) {
                             temp.add(note);
                         }
                     }
-                    notes= temp;
+                    notes = temp;
                 }
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
@@ -134,8 +138,8 @@ public class NotesAdapters extends RecyclerView.Adapter<NotesAdapters.NoteViewHo
         }, 500);
     }
 
-    public void cancelTimer(){
-        if (timer != null){
+    public void cancelTimer() {
+        if (timer != null) {
             timer.cancel();
         }
     }

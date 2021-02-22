@@ -8,7 +8,6 @@
     tools:context=".pillReminder.ReminderActivity">
 <LinearLayout
         android:layout_width="match_parent"
-        android:layout_below="@+id/toolbar"
         android:theme="@style/AppTheme"
         android:id="@+id/add_reminder_layout_top"
         android:background="@color/colorPrimary"
@@ -18,7 +17,7 @@
         <EditText
             android:layout_width="match_parent"
             android:id="@+id/reminder_title"
-            android:layout_marginLeft="72dp"
+            android:layout_marginLeft="@dimen/_72sdp"
             android:hint="@string/add_reminder"
             android:textSize="@dimen/_25ssp"
             android:lines="4"

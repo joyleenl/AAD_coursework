@@ -77,13 +77,13 @@ public class CreateNote extends AppCompatActivity {
 
         if (getIntent().getBooleanExtra("isViewOrUpdate", false)){
             alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
-            setViewOnUpdateNote();
+            setViewOrUpdateNote();
         }
 
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
-    private void  setViewOnUpdateNote(){
+    private void  setViewOrUpdateNote(){
         inputTitle.setText(alreadyAvailableNote.getTitle());
         inputSubtitle.setText(alreadyAvailableNote.getSubtitle());
         inputNote.setText(alreadyAvailableNote.getNoteText());
@@ -93,6 +93,7 @@ public class CreateNote extends AppCompatActivity {
     }
 
     private void saveNote(){
+       //put validation
         if(inputTitle.getText().toString().trim().isEmpty()) {
             Toast.makeText(this, "Title cannot be empty!", Toast.LENGTH_SHORT).show();
             return;
@@ -100,7 +101,7 @@ public class CreateNote extends AppCompatActivity {
             Toast.makeText(this, "Note cannot be empty!", Toast.LENGTH_SHORT).show();
             return;
         }
-
+    //prepare not obj to be save in db
         final Note note = new Note();
         note.setTitle(inputTitle.getText().toString());
         note.setSubtitle(inputSubtitle.getText().toString());
@@ -115,6 +116,7 @@ public class CreateNote extends AppCompatActivity {
         }
 
         @SuppressLint("StaticFieldLeak")
+                //use async task coz room doesn't allow db op in main thread
         class SaveNoteTask extends AsyncTask<Void, Void, Void> {
 
             @Override
@@ -139,6 +141,8 @@ public class CreateNote extends AppCompatActivity {
         final LinearLayout layoutMisc = findViewById(R.id.layoutMisc);
         final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(layoutMisc);
         layoutMisc.findViewById(R.id.textMisc).setOnClickListener(new View.OnClickListener() {
+
+            //coolapse and expand the misc tab
             @Override
             public void onClick(View v) {
                 if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {

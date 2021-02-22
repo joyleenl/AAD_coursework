@@ -43,22 +43,27 @@ public class Notes extends AppCompatActivity implements NotesListeners {
         //Since "createnoteactivity" started for result
         //need to handle result in "onActivityResult" method to update the note list
         //after adding a note from "CreateNoteActivity"
-        ImageView imageAddNote =findViewById(R.id.imageAddNote);
-                imageAddNote.setOnClickListener(v -> startActivityForResult(
-                        new Intent(getApplicationContext(), CreateNote.class),
-                        REQUEST_CODE_ADD_NOTE
-                )
-                );
+        ImageView imageAddNote = findViewById(R.id.imageAddNote);
+        imageAddNote.setOnClickListener((v) ->
+                {
+                    startActivityForResult(
+                            new Intent(getApplicationContext(), CreateNote.class),
+                            REQUEST_CODE_ADD_NOTE
+                    );
+                }
+        );
 
-                notesRecyclerView = findViewById(R.id.notesRecylerView);
-                notesRecyclerView.setLayoutManager(
-                        new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-                );
-                noteList = new ArrayList<>();
-                notesAdapters = new NotesAdapters(noteList, this);
-                notesRecyclerView.setAdapter(notesAdapters);
 
-                getNotes(REQUEST_CODE_SHOW_NOTE,false);// getNotes method called from onCreate() method of an activity
+        notesRecyclerView = findViewById(R.id.notesRecylerView);
+        notesRecyclerView.setLayoutManager(
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        );
+        noteList = new ArrayList<>();
+        notesAdapters = new NotesAdapters(noteList, this);
+        notesRecyclerView.setAdapter(notesAdapters);
+
+
+        getNotes(REQUEST_CODE_SHOW_NOTE,false);// getNotes method called from onCreate() method of an activity
         // we are passing REQUEST_CODE_SHOW_NOTES to get nots method
         // it means the app just started and need to display all notes from db
         //the param isNoteDeleted is passed as false
@@ -88,11 +93,12 @@ public class Notes extends AppCompatActivity implements NotesListeners {
     public void onNoteClicked(Note note, int position) {
         noteClickedPosition = position;
         Intent intent = new Intent(getApplicationContext(), CreateNote.class);
-        intent.putExtra("isVieworUpdate", true);
+        intent.putExtra("isViewOrUpdate", true);
         intent.putExtra("note", note);
         startActivityForResult(intent, REQUEST_CODE_UPDATE_NOTE);
-    }
 
+    }
+    //like async task to save not, we need to get notes from the db
     private void getNotes(final int requestCode, final boolean isNoteDeleted) { // getting the req code as a method param
         @SuppressLint("StaticFieldLeak")
         class GetNotesTask extends AsyncTask<Void, Void, List<Note>> {
@@ -110,6 +116,7 @@ public class Notes extends AppCompatActivity implements NotesListeners {
                 // add all notes fr db to noteList and notify adapter abt new data set
                 if (requestCode == REQUEST_CODE_SHOW_NOTE) {
                     noteList.addAll(notes);
+                    notesAdapters.notifyDataSetChanged();
                 }
                 //req code = REQUEST_CODE_ADD_NOTE
                 //add only first note (newly added) from the db to noteList
@@ -126,7 +133,7 @@ public class Notes extends AppCompatActivity implements NotesListeners {
                 //if not deleted: updated >> add a newly updated note to ihe same position where we remove n notify adapter abt item change
                 else if (requestCode == REQUEST_CODE_UPDATE_NOTE) {
                     noteList.remove(noteClickedPosition);
-                    if (isNoteDeleted){
+                    if (isNoteDeleted) {
                         notesAdapters.notifyItemRemoved(noteClickedPosition);
                     } else {
                         noteList.add(noteClickedPosition, notes.get(noteClickedPosition));
@@ -134,10 +141,11 @@ public class Notes extends AppCompatActivity implements NotesListeners {
                     }
                 }
             }
-
         }
+
         new  GetNotesTask().execute();
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

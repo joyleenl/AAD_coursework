@@ -1,4 +1,4 @@
-package com.example.llesson1.EmergencyButton;
+package com.example.llesson1.magnify;
 
 import android.graphics.Rect;
 import android.hardware.camera2.CameraCharacteristics;

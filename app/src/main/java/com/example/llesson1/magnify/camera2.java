@@ -1,15 +1,12 @@
 package com.example.llesson1.magnify;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.math.MathUtils;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -28,15 +25,12 @@ import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
-import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.llesson1.EmergencyButton.Zoom;
 import com.example.llesson1.R;
 
-import java.io.File;
 import java.util.Arrays;
 
 import static android.content.pm.PackageManager.FEATURE_CAMERA_ANY;

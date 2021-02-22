@@ -62,4 +62,7 @@
     <string name="how_to_navigate">Instructions</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_reminder">Add Reminder</string>
+    <string name="details">Details</string>
+    <string name="date">Date</string>
 </resources>

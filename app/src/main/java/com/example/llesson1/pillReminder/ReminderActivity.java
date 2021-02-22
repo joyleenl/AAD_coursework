@@ -38,9 +38,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import java.util.Calendar;
 
 
-public class ReminderActivity extends AppCompatActivity {
-
-    public class AddReminderActivity extends AppCompatActivity implements
+public class ReminderActivity extends AppCompatActivity implements
             TimePickerDialog.OnTimeSetListener,
             DatePickerDialog.OnDateSetListener, LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -414,7 +412,7 @@ public class ReminderActivity extends AppCompatActivity {
                     // If the reminder hasn't changed, continue with navigating up to parent activity
                     // which is the {@link MainActivity}.
                     if (!mVehicleHasChanged) {
-                        NavUtils.navigateUpFromSameTask(AddReminderActivity.this);
+                        NavUtils.navigateUpFromSameTask(ReminderActivity.this);
                         return true;
                     }
 
@@ -426,7 +424,7 @@ public class ReminderActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     // User clicked "Discard" button, navigate to parent activity.
-                                    NavUtils.navigateUpFromSameTask(AddReminderActivity.this);
+                                    NavUtils.navigateUpFromSameTask(ReminderActivity.this);
                                 }
                             };
 
@@ -689,4 +687,4 @@ public class ReminderActivity extends AppCompatActivity {
         }
 
     }
-}
+

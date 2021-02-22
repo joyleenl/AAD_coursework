@@ -26,6 +26,7 @@ import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -75,6 +76,7 @@ public class camera2 extends AppCompatActivity {
         zoomDrag = (SeekBar) findViewById(R.id.zoomDrag);
         textureView.setSurfaceTextureListener(textureListener);
         flashControl = (Switch) findViewById(R.id.flashButton);
+        cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 
         //check if device has camera
         if (getPackageManager().hasSystemFeature(FEATURE_CAMERA_ANY)) {
@@ -107,15 +109,41 @@ public class camera2 extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                System.out.println("!!! start tracking");
+
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                System.out.println("!!! stop tracking");
+
+            }
+        });
+
+        //turn the flash on and off
+        flashControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // if flash control is checked
+                if (isChecked) {
+                    //back camera is 0 (get from cameraManager.getCameraIdList)
+                    try {
+                        cameraManager.setTorchMode("0", false);
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
+
+
+                } else {
+                    try {
+                        cameraManager.setTorchMode("0", true);
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
+
+                }
             }
         });
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -298,28 +326,3 @@ public class camera2 extends AppCompatActivity {
 
     }
 
-    /*/ turn the flash on and off
-            flashControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            // if flash control is checked
-            if (isChecked) {
-                //back camera is 0 (get from cameraManager.getCameraIdList)
-                try {
-                    cameraManager.setTorchMode("0", false);
-                } catch (CameraAccessException e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                try {
-                    cameraManager.setTorchMode("0", true);
-                } catch (CameraAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    });
-
-
-}*/

@@ -1,269 +1,329 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".pillReminder.alarm.ReminderActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    tools:context=".pillReminder.ReminderActivity">
+<LinearLayout
         android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:theme="@style/AppTheme"
+        android:id="@+id/add_reminder_layout_top"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:layout_height="@dimen/_149sdp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/reminder_title"
+            android:layout_marginLeft="72dp"
+            android:hint="@string/add_reminder"
+            android:textSize="@dimen/_25ssp"
+            android:lines="4"
+            android:minLines="4"
+            android:gravity="top|left"
+            android:textColor="@android:color/black"
+            android:scrollHorizontally="false"
+            android:inputType="textCapWords|textMultiLine"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_height="@dimen/_140sdp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_below="@id/add_reminder_layout_top"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/details"
+                android:id="@+id/details"
+                android:textSize="@dimen/_15ssp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_72sdp"
+                android:textColor="@color/black"
+                android:layout_height="@dimen/_72sdp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:clickable="true"
+                android:onClick="setDate"
+                android:id="@+id/date"
+              android:backgroundTint="@color/black"
+                android:layout_height="@dimen/_72sdp">
+
+                <ImageView
+                    android:id="@+id/date_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_32sdp"
+                    android:src="@drawable/ic_day"
+                    android:layout_centerVertical="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/date_icon"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/date_text"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_15ssp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/set_date"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/mdtp_dark_gray"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:clickable="true"
+                android:onClick="setTime"
+                android:id="@+id/time"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_height="@dimen/_72sdp">
+
+                <ImageView
+                    android:id="@+id/time_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_32sdp"
+                    android:src="@drawable/ic_time"
+                    android:layout_centerVertical="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/time_icon"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/time_text"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_15ssp"
+                        android:layout_height="wrap_content"
+                        android:text="Time" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/set_time"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/mdtp_dark_gray"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/repeat"
+                android:layout_height="@dimen/_72sdp">
+
+                <ImageView
+                    android:id="@+id/repeat_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_32sdp"
+                    android:src="@drawable/ic_baseline_sync_24"
+                    android:layout_centerVertical="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/repeat_ll"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/repeat_icon"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/repeat_text"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_15ssp"
+                        android:layout_height="wrap_content"
+                        android:text="Repeat" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/set_repeat"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/mdtp_dark_gray"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/repeat_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:onClick="onSwitchRepeat"
+                    android:checked="true"
+                    android:textOn="On"
+                    android:textOff="Off"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/RepeatNo"
+                android:clickable="true"
+                android:onClick="setRepeatNo"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_height="@dimen/_72sdp">
+
+                <ImageView
+                    android:id="@+id/repeat_no_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_32sdp"
+                    android:src="@drawable/ic_baseline_unfold_more_24"
+                    android:layout_centerVertical="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/repeat_no_icon"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/repeat_no_text"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_15ssp"
+                        android:layout_height="wrap_content"
+                        android:text="Repeatition Interval" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/set_repeat_no"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/RepeatType"
+                android:clickable="true"
+                android:onClick="selectRepeatType"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_height="@dimen/_72sdp">
+
+                <ImageView
+                    android:id="@+id/repeat_type_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_32sdp"
+                    android:src="@drawable/ic_baseline_subject_24"
+                    android:layout_centerVertical="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/repeat_type_icon"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/repeat_type_text"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_15ssp"
+                        android:layout_height="wrap_content"
+                        android:text="Repeat Type" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/set_repeat_type"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:layout_below="@+id/add_reminder_layout_top"
+        android:background="@drawable/toolbar_dropshadow" />
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/starred1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true">
+        android:clickable="true"
+        android:onClick="selectFab1"
+        app:fab_icon="@drawable/ic_baseline_notifications_none_24"
+        app:fab_colorNormal= "@color/pillButton"
+        app:fab_colorPressed="@color/fab_pressed"
+        app:fab_size="normal"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/_168sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/_8sdp"/>
 
-    <ImageView
-        android:id="@+id/Imageback"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginStart="@dimen/_6sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_12sdp"
-        android:contentDescription="@string/back"
-        android:src="@drawable/ic_back"
-        app:tint="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:id="@+id/imageSave"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_12sdp"
-        android:background="@drawable/background_done_button"
-        android:contentDescription="@string/notes"
-        android:padding="@dimen/_4sdp"
-        android:src="@drawable/ic_done"
-        app:tint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/Imageback"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Imageback"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_margin="@dimen/_8sdp"
-             android:orientation="vertical"
-             app:layout_constraintTop_toTopOf="parent">
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/starred2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="selectFab2"
+        app:fab_icon="@drawable/ic_baseline_notifications_none_24"
+        app:fab_colorNormal="@color/colorAccent"
+        app:fab_colorPressed="@color/fab_pressed"
+        app:fab_size="normal"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/_168sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/_8sdp"/>
 
 
-             <androidx.cardview.widget.CardView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 app:cardCornerRadius="@dimen/_4sdp"
-                 app:cardElevation="@dimen/_2sdp"
-                 app:cardUseCompatPadding="true"
-                 app:contentPadding="@dimen/_16sdp">
-
-
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:orientation="vertical">
-
-                     <TextView
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:text="@string/medicine_name"
-                         android:textColor="@color/black"
-                         android:textSize="@dimen/_14ssp" />
-                     <EditText
-                         android:id="@+id/pillName"
-                         android:layout_width="match_parent"
-                         android:layout_height="@dimen/_35sdp"
-                         android:layout_marginStart="@dimen/_12sdp"
-                         android:layout_marginTop="@dimen/_15sdp"
-                         android:layout_marginEnd="@dimen/_12sdp"
-                         android:background="@null"
-                         android:hint="@string/enter_medicine_name"
-                         android:imeOptions="actionDone"
-                         android:importantForAutofill="no"
-                         android:includeFontPadding="false"
-                         android:inputType="text"
-                         android:textColor="@color/black"
-                         android:textColorHint="@color/notesTextHint"
-                         android:textSize="@dimen/_16ssp"
-                         app:layout_constraintTop_toBottomOf="@id/Imageback"/>
-
-                 </LinearLayout>
-             </androidx.cardview.widget.CardView>
-
-             <androidx.cardview.widget.CardView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="@dimen/_8sdp"
-                 app:cardCornerRadius="@dimen/_4sdp"
-                 app:cardElevation="@dimen/_2sdp"
-                 app:cardUseCompatPadding="true"
-                 app:contentPadding="@dimen/_16sdp">
-
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:orientation="vertical">
-
-                     <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:text="@string/medicine_days"
-                     android:textColor="@color/black"
-                     android:textSize="@dimen/_14ssp" />
-
-                     <androidx.appcompat.widget.AppCompatCheckBox
-                         android:id="@+id/every_day"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:text="@string/every_day" />
-
-                     <LinearLayout
-                         android:id="@+id/checkbox_layout"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:orientation="horizontal"
-                         android:weightSum="7">
-
-                         <com.example.llesson1.pillReminder.data.views.DayViewCheckBox
-                             android:id="@+id/dv_sunday"
-                             android:layout_width="@dimen/_40sdp"
-                             android:layout_height="@dimen/_40sdp"
-                             android:layout_margin="@dimen/_4sdp"
-                             android:layout_weight="1"
-                             android:button="@null"
-                             android:gravity="center"
-                             android:text="@string/Sunday" />
-
-                         <com.example.llesson1.pillReminder.data.views.DayViewCheckBox
-                             android:id="@+id/dv_monday"
-                             android:layout_width="@dimen/_40sdp"
-                             android:layout_height="@dimen/_40sdp"
-                             android:layout_margin="@dimen/_4sdp"
-                             android:layout_weight="1"
-                             android:background="@drawable/background_day_view"
-                             android:button="@null"
-                             android:gravity="center"
-                             android:text="@string/Monday" />
-
-
-                         <com.example.llesson1.pillReminder.data.views.DayViewCheckBox
-                             android:id="@+id/dv_tuesday"
-                             android:layout_width="@dimen/_40sdp"
-                             android:layout_height="@dimen/_40sdp"
-                             android:layout_margin="@dimen/_4sdp"
-                             android:layout_weight="1"
-                             android:background="@drawable/background_day_view"
-                             android:button="@null"
-                             android:gravity="center"
-                             android:text="@string/Tuesday" />
-
-                         <com.example.llesson1.pillReminder.data.views.DayViewCheckBox
-                             android:id="@+id/dv_wednesday"
-                             android:layout_width="@dimen/_40sdp"
-                             android:layout_height="@dimen/_40sdp"
-                             android:layout_margin="@dimen/_4sdp"
-                             android:layout_weight="1"
-                             android:background="@drawable/background_day_view"
-                             android:button="@null"
-                             android:gravity="center"
-                             android:text="@string/Wednesday" />
-
-                         <com.example.llesson1.pillReminder.data.views.DayViewCheckBox
-                             android:id="@+id/dv_thursday"
-                             android:layout_width="@dimen/_40sdp"
-                             android:layout_height="@dimen/_40sdp"
-                             android:layout_margin="@dimen/_4sdp"
-                             android:layout_weight="1"
-                             android:background="@drawable/background_day_view"
-                             android:button="@null"
-                             android:gravity="center"
-                             android:text="@string/Tuhrsday" />
-
-                         <com.example.llesson1.pillReminder.data.views.DayViewCheckBox
-                             android:id="@+id/dv_friday"
-                             android:layout_width="@dimen/_40sdp"
-                             android:layout_height="@dimen/_40sdp"
-                             android:layout_margin="@dimen/_4sdp"
-                             android:layout_weight="1"
-                             android:background="@drawable/background_day_view"
-                             android:button="@null"
-                             android:gravity="center"
-                             android:text="@string/Friday" />
-
-
-                         <com.example.llesson1.pillReminder.data.views.DayViewCheckBox
-                             android:id="@+id/dv_saturday"
-                             android:layout_width="@dimen/_40sdp"
-                             android:layout_height="@dimen/_40sdp"
-                             android:layout_margin="@dimen/_4sdp"
-                             android:layout_weight="1"
-                             android:background="@drawable/background_day_view"
-                             android:button="@null"
-                             android:gravity="center"
-                             android:text="@string/Saturday" />
-                     </LinearLayout>
-                 </LinearLayout>
-
-             </androidx.cardview.widget.CardView>
-
-             <androidx.cardview.widget.CardView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="@dimen/_8sdp"
-                 app:cardCornerRadius="@dimen/_4sdp"
-                 app:cardElevation="@dimen/_2sdp"
-                 app:cardUseCompatPadding="true"
-                 app:contentPadding="@dimen/_16sdp">
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:orientation="vertical">
-                     <TextView
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:text="@string/reminder"
-                         android:textColor="@color/black"
-                         android:textSize="@dimen/_14ssp" />
-
-                  <LinearLayout
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:orientation="horizontal">
-
-                      <TextView
-                          android:id="@+id/tv_medicine_time"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:layout_weight="1"
-                          android:background="@drawable/drawable_underline"
-                          android:gravity="center"
-                          android:padding="@dimen/_4sdp"
-                          android:textSize="@dimen/_17ssp"
-                          android:textColor="@color/black"
-                          tools:text="00:00" />
-
-                         <EditText
-                             android:id="@+id/tv_dose_quantity"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_marginStart="@dimen/_8sdp"
-                             android:layout_weight="1"
-                             android:background="@drawable/drawable_underline"
-                             android:inputType="text"
-                             android:hint="@string/_1_0"
-                             android:gravity="center"
-                             android:padding="@dimen/_4sdp" />
-
-
-                         <Spinner
-                             android:id="@+id/spinner_dose_units"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_marginStart="@dimen/_8sdp"
-                             android:layout_weight="1"
-                             android:entries="@array/medications_shape_array" />
-                     </LinearLayout>
-                 </LinearLayout>
-             </androidx.cardview.widget.CardView>
-         </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</RelativeLayout>

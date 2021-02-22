@@ -28,7 +28,8 @@
     <color name="pillButton">#FFEB3B</color>
     <color name="colorPrimary">#FFEB3B</color>
     <color name="bgAddButton">#fff429</color>
-    <color name="colorAccent">#FF000000</color>
+    <color name="colorAccent">#00D100</color>
+    <color name="fab_pressed">#546e7a</color>
     <drawable name="touchFeedback">#CFD8DC</drawable>
 
     <color name="emergencyButton">#F10505</color>

@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:id="@+id/reminder_title"
             android:layout_marginLeft="@dimen/_72sdp"
-            android:hint="@string/add_reminder"
+            android:hint="@string/add_reminder_details"
+            android:textColorHint="@color/black"
             android:textSize="@dimen/_25ssp"
             android:lines="4"
             android:minLines="4"
@@ -49,23 +50,12 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:text="@string/details"
-                android:id="@+id/details"
-                android:textSize="@dimen/_15ssp"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="@dimen/_72sdp"
-                android:textColor="@color/black"
-                android:layout_height="@dimen/_72sdp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:clickable="true"
                 android:onClick="setDate"
                 android:id="@+id/date"
-              android:backgroundTint="@color/black"
                 android:layout_height="@dimen/_72sdp">
 
                 <ImageView

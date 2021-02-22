@@ -26,7 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MedicineActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private FloatingActionButton mAddReminderButton;
-    private Toolbar mToolbar;
+    Toolbar mToolbar;
     AlarmCursorAdapter mCursorAdapter;
     AlarmReminderDBHelper alarmReminderDbHelper = new AlarmReminderDBHelper(this);
     ListView reminderListView;
@@ -37,11 +37,11 @@ public class MedicineActivity extends AppCompatActivity implements LoaderManager
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pill_reminder_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbarmain);
         setSupportActionBar(mToolbar);
-        mToolbar.setTitle(R.string.app_name);
+        mToolbar.setTitle("Medicine Reminder");
 
 
         reminderListView = (ListView) findViewById(R.id.list);
@@ -68,7 +68,7 @@ public class MedicineActivity extends AppCompatActivity implements LoaderManager
         });
 
 
-        mAddReminderButton = (FloatingActionButton) findViewById(R.id.fab);
+        mAddReminderButton = (FloatingActionButton) findViewById(R.id.addReminder);
 
         mAddReminderButton.setOnClickListener(new View.OnClickListener() {
             @Override

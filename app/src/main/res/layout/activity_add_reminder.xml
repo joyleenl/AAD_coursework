@@ -3,9 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".pillReminder.ReminderActivity">
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="@dimen/_16sdp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 <LinearLayout
         android:layout_width="match_parent"
         android:theme="@style/AppTheme"
@@ -223,7 +230,7 @@
 
                     <TextView
                         android:id="@+id/repeat_no_text"
-                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/_15ssp"
                         android:layout_height="wrap_content"
@@ -233,7 +240,7 @@
                         android:layout_width="wrap_content"
                         android:id="@+id/set_repeat_no"
                         android:textSize="@dimen/_15ssp"
-                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textColor="@color/black"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
@@ -267,7 +274,7 @@
 
                     <TextView
                         android:id="@+id/repeat_type_text"
-                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/_15ssp"
                         android:layout_height="wrap_content"
@@ -277,7 +284,7 @@
                         android:layout_width="wrap_content"
                         android:id="@+id/set_repeat_type"
                         android:textSize="@dimen/_15ssp"
-                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textColor="@color/black"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>

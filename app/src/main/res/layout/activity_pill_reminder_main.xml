@@ -6,10 +6,11 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarmain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="@dimen/_16sdp"
@@ -17,7 +18,7 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/toolbarmain"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -41,7 +42,7 @@
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/addReminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

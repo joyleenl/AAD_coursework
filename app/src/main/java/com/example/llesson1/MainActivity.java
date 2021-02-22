@@ -36,7 +36,6 @@ import com.google.android.gms.location.LocationSettingsRequest;
 
 import java.util.ArrayList;
 
-import static android.Manifest.permission.CALL_PHONE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationSettingsRequest.Builder builder;
     String latitude = "", longitude = "";
     private static final int REQUEST_LOCATION = 1;
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 2;
 
     LocationManager locationManager;
 
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         emergency.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                emergency.setEnabled(false);
                 if (ContextCompat.checkSelfPermission(MainActivity.this,
                         Manifest.permission.SEND_SMS) !=
                         PackageManager.PERMISSION_GRANTED) {

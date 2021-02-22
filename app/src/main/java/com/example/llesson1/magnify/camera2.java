@@ -38,6 +38,8 @@ import java.util.Arrays;
 import static android.content.pm.PackageManager.FEATURE_CAMERA_ANY;
 import static android.content.pm.PackageManager.FEATURE_CAMERA_FLASH;
 
+//https://developer.android.com/guide/topics/media/camera
+
 public class camera2 extends AppCompatActivity {
     TextureView textureView;
     SeekBar zoomDrag;

@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.math.MathUtils;
 
+
+// code help from https://stackoverflow.com/questions/52158395/how-to-zoom-camera-using-android-camera2-api
 public final class Zoom
     {
         private static final float DEFAULT_ZOOM_FACTOR = 1.0f;

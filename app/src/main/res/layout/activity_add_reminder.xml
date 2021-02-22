@@ -302,11 +302,11 @@
         android:clickable="true"
         android:onClick="selectFab1"
         app:fab_icon="@drawable/ic_baseline_notifications_none_24"
-        app:fab_colorNormal= "@color/pillButton"
+        app:fab_colorNormal= "@color/bottomBG"
         app:fab_colorPressed="@color/fab_pressed"
         app:fab_size="normal"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="@dimen/_168sdp"
+        android:layout_marginTop="@dimen/_120sdp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/_8sdp"/>
 
@@ -321,7 +321,7 @@
         app:fab_colorPressed="@color/fab_pressed"
         app:fab_size="normal"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="@dimen/_168sdp"
+        android:layout_marginTop="@dimen/_120sdp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/_8sdp"/>
 

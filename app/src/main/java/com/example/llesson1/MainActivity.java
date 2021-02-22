@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             startTrack();
         }
+        //when add contact clicked open the register class
         addContact.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Register.class);
             startActivity(intent);
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         emergency.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+    // cehck whether the permission to sms isgrnated or not
                 if (ContextCompat.checkSelfPermission(MainActivity.this,
                         Manifest.permission.SEND_SMS) !=
                         PackageManager.PERMISSION_GRANTED) {
@@ -177,13 +178,14 @@ public class MainActivity extends AppCompatActivity {
 
     // when starting the app
     private void startTrack() {
-
+    //check if the app hv the permission for location
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
         } else {
+            //if hv then get the longitude and lat
             Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (locationGPS != null) {
                 double lat = locationGPS.getLatitude();

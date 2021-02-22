@@ -47,6 +47,7 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
+        //back button top left
         ImageView ImageBack = findViewById(R.id.Imageback);
         ImageBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,11 +62,13 @@ public class CreateNote extends AppCompatActivity {
         textDateTime = findViewById(R.id.textDateTime);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
 
+        //set the date  and timewhen the note is created
         textDateTime.setText(
                 new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault())
                 .format(new Date())
         );
 
+        //save button
         ImageView imageSave = findViewById(R.id.imageSave);
         imageSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,6 +257,8 @@ public class CreateNote extends AppCompatActivity {
             });
         }
     }
+
+    //delete note dialog
     private void showDeleteNoteDialog(){
         if (dialogDeleteNote == null){
             AlertDialog.Builder builder = new AlertDialog.Builder(CreateNote.this);
@@ -266,6 +271,7 @@ public class CreateNote extends AppCompatActivity {
             if (dialogDeleteNote.getWindow()!= null){
                 dialogDeleteNote.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             }
+            //click delete note > remove the data
             view.findViewById(R.id.textDeleteNote).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -294,6 +300,7 @@ public class CreateNote extends AppCompatActivity {
                 }
             });
 
+            //cancel the deletion
             view.findViewById(R.id.textCancel).setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -305,6 +312,7 @@ public class CreateNote extends AppCompatActivity {
         dialogDeleteNote.show();
     }
 
+    //set note color
     private void setSubtitleIndicatorColor() {
         GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();
         gradientDrawable.setColor(Color.parseColor(selectedNoteColor));

@@ -40,9 +40,7 @@ public class Notes extends AppCompatActivity implements NotesListeners {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-        //Since "createnoteactivity" started for result
-        //need to handle result in "onActivityResult" method to update the note list
-        //after adding a note from "CreateNoteActivity"
+        //click the button on the bottom left and then prompt the createnote activity
         ImageView imageAddNote = findViewById(R.id.imageAddNote);
         imageAddNote.setOnClickListener((v) ->
                 {
@@ -53,7 +51,7 @@ public class Notes extends AppCompatActivity implements NotesListeners {
                 }
         );
 
-
+    //recycler view
         notesRecyclerView = findViewById(R.id.notesRecylerView);
         notesRecyclerView.setLayoutManager(
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -68,6 +66,7 @@ public class Notes extends AppCompatActivity implements NotesListeners {
         // it means the app just started and need to display all notes from db
         //the param isNoteDeleted is passed as false
 
+        //search for notes
         EditText inputSearch = findViewById(R.id.InputSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,6 +88,7 @@ public class Notes extends AppCompatActivity implements NotesListeners {
         });
     }
 
+    // view or update note
     @Override
     public void onNoteClicked(Note note, int position) {
         noteClickedPosition = position;
@@ -98,7 +98,7 @@ public class Notes extends AppCompatActivity implements NotesListeners {
         startActivityForResult(intent, REQUEST_CODE_UPDATE_NOTE);
 
     }
-    //like async task to save not, we need to get notes from the db
+    //like async task to save note, we need to get notes from the db
     private void getNotes(final int requestCode, final boolean isNoteDeleted) { // getting the req code as a method param
         @SuppressLint("StaticFieldLeak")
         class GetNotesTask extends AsyncTask<Void, Void, List<Note>> {
